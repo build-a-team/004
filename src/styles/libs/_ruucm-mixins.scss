@@ -1,0 +1,75 @@
+@mixin center($xy:xy) {
+  @if $xy==xy {
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    @include transform(translateX(-50%) translateY(-50%));
+  }
+  @else if $xy==x {
+    left: 50%;
+    right: auto;
+    @include transform(translateX(-50%));
+  }
+  @else if $xy==y {
+    top: 50%;
+    bottom: auto;
+    @include transform(translateY(-50%));
+  }
+}
+
+@mixin center2($xy:xy) {
+  @if $xy==y {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+
+@mixin center-icon($font-size:size) {
+    position: relative;
+    font-size: $font-size;
+    top: calc(50% - (#{$font-size}/2)); /* 50% - 1/2 of icon height */
+}
+@mixin center-p($font-size:size) {
+    position: relative;
+    font-size: $font-size;
+    top: calc(50% - (#{$font-size}*3/2)); /* 50% - 1/2 of icon height */
+}
+@mixin center-icon-p($font-size-icon:size, $font-size-text:size, $line-height:size) {
+  >span {
+    font-size: #{$font-size-icon};
+    vertical-align: middle;
+  }
+  p {
+    font-size: #{$font-size-text};
+    display: inline;
+    line-height: #{$line-height};
+  }
+}
+
+@mixin center-icon-div($font-size-icon:size, $font-size-text:size, $line-height:size) {
+  >span {
+    font-size: #{$font-size-icon};
+    vertical-align: middle;
+  }
+  >div {
+    font-size: #{$font-size-text};
+    display: inline-block;
+    height: #{$line-height};
+    vertical-align: middle;
+    background: red;
+  }
+}
+
+@mixin center-icon-a($font-size-icon:size, $font-size-text:size) {
+  >span {
+    font-size: #{$font-size-icon};
+    vertical-align: middle;
+  }
+  >a {
+    font-size: #{$font-size-text};
+    display: inline-block;
+    vertical-align: middle;
+  }
+}

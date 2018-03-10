@@ -1,0 +1,35 @@
+.home {
+	#bottom-screen {
+		margin-top: -15vw;
+	}
+	svg {
+		#nav-home, #nav-about {
+			cursor: pointer;
+		}
+		
+		a {
+			position: relative;
+			display: inline-block;
+			&:after {
+				content: ""; 
+				position: absolute; 
+				top: 0; 
+				right: 0; 
+				bottom: 0; 
+				left: 0;
+			}
+		}
+	}
+	.home-description {
+		text-align: center;
+		margin-top: 5rem;
+		a:hover {
+			background: red;
+		}
+		h3, p {
+			&:hover {
+				font-style: italic;
+			}
+		}
+	}
+}

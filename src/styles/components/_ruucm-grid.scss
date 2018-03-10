@@ -1,0 +1,54 @@
+.grid {
+	.grid-item {
+		text-align: center;
+		padding: 6rem 0;
+		color: #292623;
+		font-size: 3.5rem;
+		.item-wrapper {
+			max-width: 16rem;
+			margin: 0 auto;
+			position: relative;
+		}
+		.oasis {
+			@include vendor('transition', ( 'all #{_duration(sand-hover)} ease-out') );
+			&:before {
+				color: _palette(bg);
+				// color: red;
+			}
+			position: absolute;
+			font-size: 5rem;
+			opacity: 0.85;
+			@include breakpoint(xsmall) {
+				// font-size: 3rem;
+			}
+		}
+
+		.oasis-sand-left {
+			left: 1.6rem;
+		}
+		.oasis-sand-right {
+			right: 1.6rem;
+		}
+		&:hover,
+		&:active,
+		&:focus,
+		&:visited {
+			.oasis {
+				opacity: 0;
+			}
+			.oasis-sand-left {
+				@include vendor('transform', 'translateX(-8rem)');
+			}
+			.oasis-sand-right {
+				@include vendor('transform', 'translateX(8rem)');
+			}
+		}
+		@include breakpoint(xsmall) {
+			font-size: 2rem;
+			.oasis {
+				font-size: 3.1rem;
+				display: none;
+			}
+		}
+	}
+}
