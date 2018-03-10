@@ -3,6 +3,7 @@ import _ from 'lodash';
 import firebase from 'config/firebase';
 import classNames from "classnames/bind";
 import styles from "./FeedPage.scss";
+import Feed from "./Feed"
 const cx = classNames.bind(styles);
 
 const rootRef = firebase.database().ref();
@@ -45,32 +46,12 @@ class FeedPage extends Component {
         });
     }
 
-    sumRate(rates) {
-        return _.reduce(rates, function(result, value, key) {
-            return result + _.parseInt(value);
-        }, 0)
-    }
-
-    updateRate = (feed, rate) => {
-        const { key } = feed;
-        feedsRef.child(key).child('rates').push({ id: timeRef, rate: rate });
-    };
-
     render() {
         return (
             <div>
                 {
                     _.map(this.state.feeds, (feed) => {
-                        return <div>
-                            <div>
-                                <img src={feed.imageUrl} alt="" />
-                            </div>
-                            <div>{this.sumRate(feed.rates)}</div>
-                            <div>
-                                <button onClick={this.updateRate(feed, -1)}>Up</button>
-                                <button onClick={this.updateRate(feed, 1)}>Down</button>
-                            </div>
-                        </div>
+                        return <Feed data={feed} />
                     })
                 }
             </div>
