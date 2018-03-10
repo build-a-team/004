@@ -4,6 +4,7 @@ import styles from "./Feed.scss";
 const cx = classNames.bind(styles);
 
 const feed = props => {
+    console.log(props);
     return (
         <div className={cx("feed")}>
             <div className={cx("feed-img-wrap")}>
