@@ -25,12 +25,23 @@ class MainPage extends Component {
     state = {
         feeds: [],
         feed: {},
-        user: firebase.auth().currentUser
+        user: {}
     };
     action(name) {
         console.log(name);
     }
     componentDidMount() {
+        firebase.auth().onAuthStateChanged((user) => {
+            debugger;
+            if (user) {
+                this.setState({
+                    user
+                });
+            } else {
+                console.log("You are not signed in");
+            }
+        });
+        
         feedsRef.on("value", snap => {
             const feeds = [];
             snap.forEach(shot => {
@@ -66,7 +77,7 @@ class MainPage extends Component {
             .child(key)
             .child("rates")
             .push({
-                id: this.state.user,
+                id: this.state.user.uid,
                 rate: -1
             });
         this.nextFeed();
@@ -78,7 +89,7 @@ class MainPage extends Component {
             .child(key)
             .child("rates")
             .push({
-                id: this.state.user,
+                id: this.state.user.uid,
                 rate: 1
             });
         this.nextFeed();
@@ -90,7 +101,7 @@ class MainPage extends Component {
             .child(key)
             .child("rates")
             .push({
-                id: this.state.user,
+                id: this.state.user.uid,
                 rate: 0
             });
         this.nextFeed();
