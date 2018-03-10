@@ -42,7 +42,8 @@
 		}
 		.select-btns-wrapper {
 			margin: 0;
-			margin-top: _rem(42.5);
+			// margin-top: _rem(42.5);
+			margin-top: -115px;
 			.col-6 {
 				text-align: center;
 			}
@@ -50,6 +51,7 @@
 				font-size: _rem(18);
 				font-weight: 700;
 				color: #d5d5d5;
+				cursor: pointer;
 			}
 		}
 
@@ -93,26 +95,34 @@
 		  cursor: pointer;
 		  border-radius: 8px;
 		  border: none;
+		    @include vendor('transition', ( 'width #{_duration(transition)} ease-out') );
 		  img {
 		  	border-radius: 8px;
+		    @include vendor('transition', ( 'all #{_duration(transition)} ease-out') );
 		  }
 		  &:nth-of-type(1) {
 		  	position: absolute;
 		  	top: 0;
 		  	max-width: 72%;
+		  	-webkit-box-shadow: 0px 10px 45px 0px rgba(0,0,0,0.15);
+			-moz-box-shadow: 0px 10px 45px 0px rgba(0,0,0,0.15);
+			box-shadow: 0px 10px 45px 0px rgba(0,0,0,0.15);
 		  	img {
-		  		display: none;
+		  		// display: none;
+		  		opacity: 0;
 		  	}
 		  }
 		  &:nth-of-type(2) {
 		  	position: absolute;
 		  	top: -1rem;
-		  	max-width: 83%;
+		  	display:block;
+		  	max-width: 81%;
 		  	-webkit-box-shadow: 0px 10px 45px 0px rgba(0,0,0,0.15);
 			-moz-box-shadow: 0px 10px 45px 0px rgba(0,0,0,0.15);
 			box-shadow: 0px 10px 45px 0px rgba(0,0,0,0.15);
 		  	img {
-		  		display: none;
+		  		// display: none;
+		  		opacity: 0;
 		  	}
 		  }
 		  &:nth-of-type(3) {
@@ -120,10 +130,11 @@
 		  	top: -2rem;
 		  }
 		  &:last-child {
-		  	width: calc(100% - 18px) !important;
+		  	width: calc(100% - 36px) !important;
 		  	max-width: 100% !important;
 		  	img {
-		  		display: inherit !important;
+		  		// display: inherit !important;
+		  		opacity: 1;
 		  	}
 		  }
 		}
@@ -156,7 +167,9 @@
 		.alert-right {
 		  top: 0;
 		  right: 0;
-		  background: green;
+		  background: #2232FB;
+		  color: white;
+		  padding-left: 1rem;
 		  border-top-left-radius: 50px;
 		  border-bottom-left-radius: 50px;
 		}
@@ -164,7 +177,9 @@
 		.alert-left {
 		  top: 0;
 		  left: 0;
-		  background: red;
+		  background: white;
+		  color: #424242;
+		  padding-left: 1rem;
 		  border-top-right-radius: 50px;
 		  border-bottom-right-radius: 50px;
 		}
@@ -189,17 +204,17 @@
 		.peeker-ic-select-info {
 			position: absolute;
 			right: 25px;
-			font-size: 3rem;
+			font-size: _rem(52.5);
 			top: 14px;
 			z-index: 99;
 			cursor: pointer;
 			&:hover,
 			&:active,
 			&:focus {
-				.path1:before, .path2:before {
+				.path1:before {
 					color: rgb(23, 28, 240);
 				}
-				.path3:before {
+				.path2:before {
 					color: white;
 				}
 			}

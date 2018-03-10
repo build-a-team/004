@@ -12,10 +12,9 @@
 
         [class*="page"] {
             width: 100%;
-            height: calc(100vh - 65px);
+            height: 640px;
             overflow-y: scroll;
             overflow-x: hidden;
-            padding-bottom: 80px;
         }
     }
 }
