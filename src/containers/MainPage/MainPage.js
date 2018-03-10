@@ -9,7 +9,6 @@ import Cards from "components/SwipeCard/Cards";
 import Card from "components/SwipeCard/CardSwitcher";
 import { log } from "ruucm-util";
 
-const data = ["Alexandre", "Thomas", "Lucien"];
 const CustomAlertLeft = () => {
     return <span>Nop</span>;
 };
@@ -119,7 +118,8 @@ class MainPage extends Component {
                 <div className="main-page-wrapper">
                   <div className="main-header">
 					  <h1 className="main-title">Peeker</h1>
-					  <button className="btn-skip">SIKP</button>
+                      <button className="btn-skip"
+                              onClick={this.updateRateSkip}>SIKP</button>
 				  </div>
 				  <div className="cards-wrapper">
 					  <Cards
@@ -127,12 +127,12 @@ class MainPage extends Component {
 					    alertLeft={<CustomAlertLeft />} 
 					    onEnd={this.action('end')}
 					    className='master-root'>
-					    {data.map((item, key) => 
+					    {this.state.feeds.map((item, key) => 
 					      <Card
 					          key={key}
-					          onSwipeLeft={()=>{this.action('swipe left!!!!!')}}
-					          onSwipeRight={()=>{this.action('swipe right!!!!')}}>
-					        <img src={this.state.feed.downloadURL} alt="" width="100%;" height="100%;" />
+					          onSwipeLeft={this.updateRateDown}
+					          onSwipeRight={this.updateRateUp}>
+					        <img src={item.downloadURL} alt="" width="100%;" height="100%;" />
 					      </Card>
 					    )}
 
