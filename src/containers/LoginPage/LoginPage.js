@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import InputField from "components/UI/InputField";
 import firebase from "config/firebase";
 import classNames from "classnames/bind";
 import styles from "./LoginPage.scss";
@@ -53,26 +54,37 @@ class LoginPage extends Component {
                 <h1>Login Page</h1>
                 <div className={cx("form")}>
                     <form onSubmit={this.handleLogin}>
-                        <div className="form-group">
-                            <label>
-                                <input
-                                    type="text"
-                                    name="email"
-                                    onChange={this.handleChange}
-                                />
-                            </label>
+                        <InputField
+                            type="text"
+                            name="email"
+                            placeholder="이메일"
+                            onChange={this.handleChange}
+                        />
+                        <InputField
+                            type="password"
+                            name="password"
+                            placeholder="비밀번호"
+                            onChange={this.handleChange}
+                        />
+                        <div
+                            className="form-group"
+                            style={{ marginBottom: "20px" }}
+                        >
+                            <button className={cx("login-button")}>
+                                로그인
+                            </button>
                         </div>
-                        <div className="form-group">
-                            <label>
-                                <input
-                                    type="password"
-                                    name="password"
-                                    onChange={this.handleChange}
-                                />
-                            </label>
-                        </div>
-                        <div className="form-group">
-                            <button>로그인</button>
+                        <div className="form-group row">
+                            <div className={cx("col-sm-6")}>
+                                <button className={cx("facebook-login-button")}>
+                                    Facebook으로 시작하기
+                                </button>
+                            </div>
+                            <div className={cx("col-sm-6")}>
+                                <button className={cx("around-button")}>
+                                    둘러보기
+                                </button>
+                            </div>
                         </div>
                     </form>
                 </div>

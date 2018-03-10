@@ -1,5 +1,7 @@
 :global {
-	@import 'styles/common';
+
+  @import "styles/common";
+
 	.app {
 		max-width: _rem(360);
 		margin: 0 auto;
@@ -7,3 +9,4 @@
 		border: 1px solid red;
 	}
 }
+
