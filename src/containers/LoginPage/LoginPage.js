@@ -54,20 +54,22 @@ class LoginPage extends Component {
                 <div className={cx("form")}>
                     <form onSubmit={this.handleLogin}>
                         <div className="form-group">
-                            <label>이메일</label>
-                            <input
-                                type="text"
-                                name="email"
-                                onChange={this.handleChange}
-                            />
+                            <label>
+                                <input
+                                    type="text"
+                                    name="email"
+                                    onChange={this.handleChange}
+                                />
+                            </label>
                         </div>
                         <div className="form-group">
-                            <label>비밀번호</label>
-                            <input
-                                type="password"
-                                name="password"
-                                onChange={this.handleChange}
-                            />
+                            <label>
+                                <input
+                                    type="password"
+                                    name="password"
+                                    onChange={this.handleChange}
+                                />
+                            </label>
                         </div>
                         <div className="form-group">
                             <button>로그인</button>
