@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import LoginPage from "containers/LoginPage";
-import MainPage from "containers/MainPage/MainPage";
+import MainPage from "containers/MainPage";
 import SignupPage from "containers/SignupPage";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import classNames from "classnames/bind";

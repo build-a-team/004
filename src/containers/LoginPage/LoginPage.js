@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import firebase from "config/firebase";
 import classNames from "classnames/bind";
 import styles from "./LoginPage.scss";
@@ -28,6 +29,7 @@ class LoginPage extends Component {
             .signInWithEmailAndPassword(email, password)
             .then(response => {
                 alert("로그인 성공");
+                this.props.history.push("/");
             })
             .catch(error => {
                 // Handle Errors here.
@@ -77,4 +79,4 @@ class LoginPage extends Component {
     }
 }
 
-export default LoginPage;
+export default withRouter(LoginPage);

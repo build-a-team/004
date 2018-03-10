@@ -26,7 +26,7 @@ class SignupPage extends Component {
                 this.state.email,
                 this.state.password
             )
-            .then(function(response) {
+            .then(response => {
                 alert("가입완료");
                 this.setState({
                     email: "",
