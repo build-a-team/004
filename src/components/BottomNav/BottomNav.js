@@ -58,8 +58,8 @@ class BottomNav extends Component {
     };
 
     handlePreWrite = event => {
-        firebase.auth().onAuthStateChanged(({ email }) => {
-            if (email) {
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
                 this.cameraUpload.click();
             } else {
                 alert("로그인이 필요한 서비스입니다.");
