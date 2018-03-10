@@ -5,20 +5,30 @@
     }
 
     .login-button {
-        display: block;
-        padding: 10px;
         background: #ffc34b;
-        width: 100%;
-        border: none;
-        border-radius: 3px;
     }
 
     .facebook-login-button {
+        background: #3861a2;
+        color: white;
     }
 
     .around-button {
     }
 
     button {
+        border: none;
+        width: 100%;
+        padding: 10px;
+        border-radius: 1.5px;
+    }
+
+    .help-text {
+        color: #868686;
+        text-align: center;
+
+        a {
+            color: #868686;
+        }
     }
 }
