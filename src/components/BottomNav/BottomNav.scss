@@ -4,13 +4,22 @@
 		.nav-btns-wrapper {
 			width: 100%;
 			position: absolute;
+			height: _rem(60);
 			bottom: 0;
+<<<<<<< HEAD
 			background: pink;
+=======
+>>>>>>> BottomNav style update
 			margin: 0 !important;
 			@include center(x);
 			button {
 				font-size: _rem(12);
 			}
+		}
+		.link-container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
 	}
 }
