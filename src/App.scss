@@ -1,18 +1,21 @@
-@import 'styles/base/fonts';
+@import "styles/base/fonts";
 :global {
-	@import "styles/common";
-	@import 'styles/base/peeker-icon';
-	.app {
-		max-width: _rem(360);
-		height: _rem(640);
-		margin: 0 auto;
-		border: 1px solid red;
-		position: relative;
-		background: #e4e3e3;
-	    [class*="page"] {
-	        width: 100%;
-	        height: 100vh;
-	        overflow-y: scroll;
-	    }
-	}
+    @import "styles/common";
+    @import "styles/base/peeker-icon";
+    .app {
+        max-width: _rem(360);
+        // height: _rem(640);
+        margin: 0 auto;
+        border: 1px solid red;
+        position: relative;
+        background-color: #f2f2f2;
+
+        [class*="page"] {
+            width: 100%;
+            height: calc(100vh - 65px);
+            overflow-y: scroll;
+            overflow-x: hidden;
+            padding-bottom: 65px;
+        }
+    }
 }

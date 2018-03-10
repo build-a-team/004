@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter, Link, NavLink } from "react-router-dom";
 
 import firebase from "config/firebase";
 import styles from "./BottomNav.scss";
@@ -58,8 +58,8 @@ class BottomNav extends Component {
     };
 
     handlePreWrite = event => {
-        firebase.auth().onAuthStateChanged(({ email }) => {
-            if (email) {
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
                 this.cameraUpload.click();
             } else {
                 alert("로그인이 필요한 서비스입니다.");
@@ -76,10 +76,9 @@ class BottomNav extends Component {
             <div className="row nav-btns-wrapper">
                 {LinkText.map((link, i) => {
                     return i === 2 ? (
-                        <div className="col-3">
-                            <button onClick={this.handlePreWrite}>
-                                글쓰기
-                            </button>
+                        <div className="col-3 link-container">
+                            <a onClick={this.handlePreWrite}>Upload</a>
+
                             <input
                                 type="file"
                                 style={{ display: "none" }}
@@ -95,24 +94,13 @@ class BottomNav extends Component {
                         </div>
                     ) : (
                         <div className="col-3 link-container">
-                            <Link
+                            <NavLink
                                 key={`link-${link.path}`}
                                 to={link.path}
-                                style={{
-                                    color:
-                                        this.state.currentIdx === link.idx
-                                            ? "#1d20ff"
-                                            : "#d8d8d8",
-                                    borderTop: `2px solid ${
-                                        this.state.currentIdx === link.idx
-                                            ? "#1d20ff"
-                                            : "transparent"
-                                    }`,
-                                    ...linkStyles.link
-                                }}
+                                exact
                             >
                                 {link.tabName}
-                            </Link>
+                            </NavLink>
                         </div>
                     );
                 })}
