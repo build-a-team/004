@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import LoginPage from "containers/LoginPage/LoginPage";
 import MainPage from "containers/MainPage/MainPage";
-import SignupPage from "containers/SignupPage/SignupPage";
+import SignupPage from "containers/SignupPage";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import classNames from "classnames/bind";
 import styles from "./App.scss";
