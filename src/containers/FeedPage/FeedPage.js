@@ -1,38 +1,34 @@
-import React, { Component } from 'react';
-import _ from 'lodash';
-import firebase from 'config/firebase';
+import React, { Component } from "react";
+import Feed from "./Feed";
+import firebase from "config/firebase";
 import classNames from "classnames/bind";
 import styles from "./FeedPage.scss";
-import Feed from "./Feed"
+import BottomNav from "components/BottomNav";
+import testImg from "assets/images/img-card.png";
 const cx = classNames.bind(styles);
 
-const rootRef = firebase.database().ref();
-const feedsRef = rootRef.child('feeds');
-const timeRef = firebase.database.ServerValue.TIMESTAMP;
-
 class FeedPage extends Component {
-    state = { 
-        feeds: []
-    }
-
-    componentDidMount() {
-        feedsRef.on('value', snap => {
-            const feeds = [];
-            snap.forEach(shot => {
-                feeds.push({ ...shot.val(), key: shot.key });
-            });
-            this.setState({ feeds });
-        });
+    constructor(props) {
+        super(props);
+        this.state = {
+            feeds: []
+        };
     }
 
     render() {
         return (
-            <div>
-                {
-                    _.map(this.state.feeds, (feed) => {
-                        return <Feed data={feed} />
-                    })
-                }
+            <div className={cx("feed-page")}>
+                <nav className={cx("feed-nav")}>
+                    <button className="col-4 hash-tag">#해시태그</button>
+                    <button className="col-4 hash-tag">#해시태그</button>
+                    <button className="col-4 plus">+</button>
+                </nav>
+                <div className="container-tagImg">
+                    <Feed img={testImg} hashtag="#Date_look" count="1000" />
+                    <Feed img={testImg} hashtag="#Girl_crush" count="355,000" />
+                    <Feed img={testImg} hashtag="#rain" count="2000" />
+                </div>
+                <BottomNav className="bottom-nav" />
             </div>
         );
     }

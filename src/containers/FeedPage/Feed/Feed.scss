@@ -1,0 +1,36 @@
+.feed {
+    width: 100%;
+    background: white;
+    border: solid 0.5px #979797;
+    margin-top: 50px !important;
+    border: 1px solid #ccc !important;
+    border-radius: 1.5px;
+
+    padding: 10px !important;
+
+    .feed-img-wrap {
+        margin-top: -35px;
+        width: 100%;
+        border-radius: 3px;
+        img {
+            width: 100%;
+            height: 130px;
+            border-radius: 1.5px;
+        }
+    }
+
+    .feed-body {
+        position: relative;
+        overflow: hidden;
+        height: 32px;
+        margin-top: 10px;
+        .hash-tag {
+            position: absolute;
+            left: 0;
+        }
+        .feed-count {
+            position: absolute;
+            right: 0;
+        }
+    }
+}
