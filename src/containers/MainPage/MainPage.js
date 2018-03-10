@@ -110,21 +110,24 @@ class MainPage extends Component {
 					  <h1 className="main-title">Peeker</h1>
 					  <button className="btn-skip">SIKP</button>
 				  </div>
-				  <Cards
-				    alertRight={<CustomAlertRight />} 
-				    alertLeft={<CustomAlertLeft />} 
-				    onEnd={this.action('end')}
-				    className='master-root'>
-				    {data.map((item, key) => 
-				      <Card
-				          key={key}
-				          onSwipeLeft={()=>{this.action('swipe left!!!!!')}}
-				          onSwipeRight={()=>{this.action('swipe right!!!!')}}>
-				        <img src={this.state.feed.downloadURL} alt="" width="100%;" height="100%;" />
-				      </Card>
-				    )}
-				  </Cards>
-					
+				  <div className="cards-wrapper">
+					  <Cards
+					    alertRight={<CustomAlertRight />} 
+					    alertLeft={<CustomAlertLeft />} 
+					    onEnd={this.action('end')}
+					    className='master-root'>
+					    {data.map((item, key) => 
+					      <Card
+					          key={key}
+					          onSwipeLeft={()=>{this.action('swipe left!!!!!')}}
+					          onSwipeRight={()=>{this.action('swipe right!!!!')}}>
+					        <img src={this.state.feed.downloadURL} alt="" width="100%;" height="100%;" />
+					      </Card>
+					    )}
+
+					  </Cards>
+					  <span class="peeker peeker-ic-select-info"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+				  </div>
 				</div>
                 <div className="row select-btns-wrapper">
 				  <div className="col-6">
