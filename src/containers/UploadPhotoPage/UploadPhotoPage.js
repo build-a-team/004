@@ -102,6 +102,8 @@ class UploadPhotoPage extends Component {
 
         feedsRef.push(feed);
 
+        console.log(downloadURL);
+
         const { tags } = this.state;
 
         for (const tag of tagList) {
@@ -112,6 +114,22 @@ class UploadPhotoPage extends Component {
     };
 
     componentDidMount() {
+        const updatingImage = this.props.location.state
+            ? this.props.location.state.updatingImage
+            : null;
+
+        const nextState = {};
+        const reader = new FileReader();
+        reader.onload = e => {
+            nextState.src = e.target.result;
+            this.setState(nextState);
+        };
+        reader.readAsDataURL(updatingImage);
+
+        this.setState({
+            file: updatingImage
+        });
+
         firebase.auth().onAuthStateChanged(({ email }) => {
             if (email) {
                 this.setState({
@@ -149,7 +167,7 @@ class UploadPhotoPage extends Component {
     render() {
         return (
             <div className="App">
-                <input
+                {/* <input
                     type="file"
                     capture="camera"
                     accept="image/*"
@@ -159,7 +177,7 @@ class UploadPhotoPage extends Component {
                     id="cameraInput"
                     name="cameraInput"
                     onChange={this.handlePreUpload}
-                />
+                /> */}
                 <br />
                 <img
                     src={this.state.src}
