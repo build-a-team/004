@@ -3,11 +3,9 @@
 	:global {
 		@import '../../styles/common';
 		.nav-btns-wrapper {
-			width: 100%;
-			position: absolute;
+			position: fixed;
 			height: _rem(60);
 			bottom: 0;
-			background: pink;
 			margin: 0 !important;
 			@include center(x);
 			button {

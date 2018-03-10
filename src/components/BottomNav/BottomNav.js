@@ -25,17 +25,17 @@ const LinkText = [
 	{
 		tabName: 'Feed',
 		idx: 1,
-		path: "/"
+		path: "/feed"
 	},
 	{
 		tabName: 'Upload',
 		idx: 2,
-		path: "/"
+		path: "/upload"
 	},
 	{
 		tabName: 'My',
 		idx: 3,
-		path: "/"
+		path: "/my-page"
 	},
 ];
 
