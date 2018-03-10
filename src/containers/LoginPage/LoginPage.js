@@ -12,6 +12,12 @@ class LoginPage extends Component {
         };
     }
 
+    handleChange = ev => {
+        this.setState({
+            [ev.target.name]: ev.target.value
+        });
+    };
+
     render() {
         return (
             <div className={cx("login-page")}>
