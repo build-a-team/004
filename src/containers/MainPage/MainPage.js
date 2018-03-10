@@ -97,53 +97,43 @@ class MainPage extends Component {
     };
     render() {
         return (
-            <div className={cx("main-page")}>
-                <nav className={cx("main-nav")}>
-                    {_.map(this.state.feed.tagList, tag => {
-                        return <button className="hash-tag">#{tag}</button>;
-                    })}
-                    <button className="show-result">
-                        <Link to="/vote-result">결과보기</Link>
-                        {this.sumRate(this.state.feed.rates)}
-                    </button>
-                </nav>
-                <div>
-                    <h1>react swipe card</h1>
-                    <Cards
-                        alertRight={<CustomAlertRight />}
-                        alertLeft={<CustomAlertLeft />}
-                        onEnd={this.action("end")}
-                        className="master-root"
-                    >
-                        {data.map((item, key) => (
-                            <Card
-                                key={key}
-                                onSwipeLeft={() => {
-                                    this.action("swipe left!!!!!");
-                                }}
-                                onSwipeRight={() => {
-                                    this.action("swipe right!!!!");
-                                }}
-                            >
-                                <h2>{item}</h2>
-                            </Card>
-                        ))}
-                    </Cards>
-                    <img
-                        src={this.state.feed.downloadURL}
-                        alt=""
-                        width="100%;"
-                        height="100%;"
-                    />
-                </div>
+			<div className={cx("main-page")}>
+            	<nav className={cx("main-nav")}>
+					{
+						_.map(this.state.feed.tags, tag => {
+							return <button className="hash-tag">#{tag}}</button>
+						})
+					}
+            	</nav>
+                <div className="main-page-wrapper">
+                  <div className="main-header">
+					  <h1 className="main-title">Peeker</h1>
+					  <button className="btn-skip">SIKP</button>
+				  </div>
+				  <Cards
+				    alertRight={<CustomAlertRight />} 
+				    alertLeft={<CustomAlertLeft />} 
+				    onEnd={this.action('end')}
+				    className='master-root'>
+				    {data.map((item, key) => 
+				      <Card
+				          key={key}
+				          onSwipeLeft={()=>{this.action('swipe left!!!!!')}}
+				          onSwipeRight={()=>{this.action('swipe right!!!!')}}>
+				        <img src={this.state.feed.downloadURL} alt="" width="100%;" height="100%;" />
+				      </Card>
+				    )}
+				  </Cards>
+					
+				</div>
                 <div className="row select-btns-wrapper">
-                    <div className="col-6">
-                        <button onClick={this.updateRateDown}>스투핏</button>
-                    </div>
-                    <div className="col-6">
-                        <button onClick={this.updateRateUp}>그뤠잇</button>
-                    </div>
-                </div>
+				  <div className="col-6">
+				  	<button onClick={this.updateRateDown}>Stupid 😅</button>
+				  </div>
+				  <div className="col-6">
+				  	<button onClick={this.updateRateUp}>Great 😍</button>
+				  </div>
+				</div>
             </div>
         );
     }
