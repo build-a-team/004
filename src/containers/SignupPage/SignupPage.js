@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { withRouter, Link } from "react-router-dom";
+import InputField from "components/UI/InputField";
 import firebase from "config/firebase";
 import classNames from "classnames/bind";
 import styles from "./SignupPage.scss";
@@ -32,6 +34,7 @@ class SignupPage extends Component {
                     email: "",
                     password: ""
                 });
+                this.props.history.push("/");
                 console.log(response);
             })
             .catch(function(error) {
@@ -51,66 +54,35 @@ class SignupPage extends Component {
         ev.preventDefault();
     };
 
-    signupWithFacebook = () => {
-        var provider = new firebase.auth.FacebookAuthProvider();
-        provider.addScope("user_birthday");
-        firebase.auth().languageCode = "fr_FR";
-        provider.setCustomParameters({
-            display: "popup"
-        });
-
-        firebase
-            .auth()
-            .signInWithPopup(provider)
-            .then(function(result) {
-                // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-                var token = result.credential.accessToken;
-                // The signed-in user info.
-                var user = result.user;
-                // ...
-
-                alert("Facebook 로그인");
-            })
-            .catch(function(error) {
-                // Handle Errors here.
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                // The email of the user's account used.
-                var email = error.email;
-                // The firebase.auth.AuthCredential type that was used.
-                var credential = error.credential;
-                // ...
-            });
-    };
-
     render() {
         return (
             <div className={cx("signup-page")}>
                 <h1>Signup Page</h1>
                 <div className={cx("form")}>
-                    <form onSubmit={event => this.handleSignup(event)}>
-                        <div className="form-group">
-                            <label>이메일</label>
-                            <input
-                                type="text"
-                                name="email"
-                                value={this.state.email}
-                                onChange={this.handleChange}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label>비밀번호</label>
-                            <input
-                                type="password"
-                                name="password"
-                                value={this.state.password}
-                                onChange={this.handleChange}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <button>회원가입</button>
-                            <button onClick={this.signupWithFacebook}>
-                                Facebook 으로 시작하기
+                    <form onSubmit={this.handleLogin}>
+                        <InputField
+                            type="text"
+                            name="email"
+                            placeholder="이메일"
+                            value={this.state.email}
+                            onChange={this.handleChange}
+                        />
+                        <InputField
+                            type="password"
+                            name="password"
+                            placeholder="비밀번호"
+                            value={this.state.password}
+                            onChange={this.handleChange}
+                        />
+                        <div
+                            className="form-group"
+                            style={{ marginBottom: "20px" }}
+                        >
+                            <button
+                                className={cx("login-button")}
+                                onClick={this.handleSignup}
+                            >
+                                회원가입
                             </button>
                         </div>
                     </form>
@@ -120,4 +92,4 @@ class SignupPage extends Component {
     }
 }
 
-export default SignupPage;
+export default withRouter(SignupPage);
