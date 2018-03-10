@@ -10,17 +10,11 @@ class UploadPhotoPage extends Component {
     state = {
         downloadURL: "", // 파이어베이스에 업로드 된 URL
         src: "", // 미리보기 화면에 이미지를 띄우기 위한 로컬 경로
-        userId: "user00", //
-        rate: "85"
+        userId: ""
     };
 
-    // 업로드 이벤트
     handlePreUpload = event => {
         const file = event.target.files[0];
-
-        const { name } = file;
-        console.log(name);
-
         const nextState = {};
         const reader = new FileReader();
         reader.onload = e => {
@@ -28,16 +22,15 @@ class UploadPhotoPage extends Component {
             this.setState(nextState);
         };
         reader.readAsDataURL(file);
-
         this.setState({
             file
         });
     };
 
+    // 업로드 이벤트
     handleUpload = () => {
         const { file } = this.state;
         const { name } = file;
-        console.log(name);
         const storageRef = firebase.storage().ref();
         const metadata = {
             contentType: "image/jpeg"
@@ -55,21 +48,20 @@ class UploadPhotoPage extends Component {
                 const progress =
                     snapshot.bytesTransferred / snapshot.totalBytes * 100;
                 console.log("Upload is " + progress + "% done");
-                switch (snapshot.state) {
-                    case firebase.storage.TaskState.PAUSED: // or 'paused'
-                        console.log("Upload is paused");
-                        break;
-                    case firebase.storage.TaskState.RUNNING: // or 'running'
-                        console.log("Upload is running");
-                        break;
-                    default:
-                        console.log("Upload status");
-                }
+                // switch (snapshot.state) {
+                //     case firebase.storage.TaskState.PAUSED: // or 'paused'
+                //         console.log("Upload is paused");
+                //         break;
+                //     case firebase.storage.TaskState.RUNNING: // or 'running'
+                //         console.log("Upload is running");
+                //         break;
+                //     default:
+                //         console.log("Upload status");
+                // }
             },
             () => {
                 // A full list of error codes is available at
                 // https://firebase.google.com/docs/storage/web/handle-errors
-
                 console.log("err");
             },
             () => {
@@ -91,7 +83,6 @@ class UploadPhotoPage extends Component {
 
         const rootRef = firebase.database().ref();
         const tasksRef = rootRef.child("feeds");
-        const timeRef = firebase.database.ServerValue.TIMESTAMP;
 
         const feed = {
             userId,
@@ -100,20 +91,11 @@ class UploadPhotoPage extends Component {
         };
 
         tasksRef.push(feed);
-
-        // firebase
-        //     .database()
-        //     .ref("feed/" + userId)
-        //     .set({
-        //         userId,
-        //         downloadURL
-        //     });
-
-        console.log("DB통신 추가중");
-        console.log("이따가 시안 정해지면 리다이렉션 하겠음ㅋ");
     };
 
     componentDidMount() {
+        const userInfo = firebase.auth().currentUser;
+
         firebase
             .database()
             .ref("/feeds")
@@ -131,7 +113,17 @@ class UploadPhotoPage extends Component {
     render() {
         return (
             <div className="App">
-                <input type="file" onChange={this.handlePreUpload} />
+                <input
+                    type="file"
+                    capture="camera"
+                    accept="image/*"
+                    ref={input => {
+                        this.cameraUpload = input;
+                    }}
+                    id="cameraInput"
+                    name="cameraInput"
+                    onChange={this.handlePreUpload}
+                />
                 <br />
                 <img
                     src={this.state.src}
