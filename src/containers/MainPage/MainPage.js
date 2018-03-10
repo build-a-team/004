@@ -26,9 +26,11 @@ class MainPage extends Component {
         feed: {},
         user: {}
     };
+
     action(name) {
         console.log(name);
     }
+
     componentDidMount() {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
@@ -40,7 +42,7 @@ class MainPage extends Component {
             }
         });
         
-        feedsRef.on("value", snap => {
+        feedsRef.once("value", snap => {
             const feeds = [];
             snap.forEach(shot => {
                 feeds.push({ ...shot.val(), key: shot.key });
@@ -63,6 +65,7 @@ class MainPage extends Component {
     }
 
     nextFeed = () => {
+        debugger;
         this.setState({
             feeds: this.state.feeds.slice(1),
             feed: this.state.feeds.slice(1)[0]
@@ -109,7 +112,7 @@ class MainPage extends Component {
 			<div className={cx("main-page")}>
             	<nav className={cx("main-nav")}>
 					{
-						_.map(this.state.feed.tags, tag => {
+						this.state.feed.tags && _.map(this.state.feed.tags, tag => {
 							return <button className="hash-tag">#{tag}}</button>
 						})
 					}
