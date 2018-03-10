@@ -51,6 +51,11 @@ class FeedPage extends Component {
         }, 0)
     }
 
+    updateRate = (feed, rate) => {
+        const { key } = feed;
+        feedsRef.child(key).child('rates').push({ id: timeRef, rate: rate });
+    };
+
     render() {
         return (
             <div>
@@ -61,6 +66,10 @@ class FeedPage extends Component {
                                 <img src={feed.imageUrl} alt="" />
                             </div>
                             <div>{this.sumRate(feed.rates)}</div>
+                            <div>
+                                <button onClick={this.updateRate(feed, -1)}>Up</button>
+                                <button onClick={this.updateRate(feed, 1)}>Down</button>
+                            </div>
                         </div>
                     })
                 }
