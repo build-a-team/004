@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import _ from "lodash";
 import Feed from "./Feed";
 import firebase from "config/firebase";
 import classNames from "classnames/bind";
@@ -11,8 +12,55 @@ class FeedPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            feeds: []
+            tags: []
         };
+    }
+
+    componentDidMount() {
+        const rootRef = firebase.database().ref();
+        const tagsRef = rootRef.child("tags");
+        const feedsRef = rootRef.child("feeds");
+
+        let tags = [];
+        let feeds = [];
+
+        feedsRef.on("value", feedShots => {
+            feeds = [];
+            feedShots.forEach(feed => {
+                feeds.push({
+                    ...feed.val(),
+                    id: feed.key
+                });
+            });
+
+            console.log(feeds);
+        });
+
+        tagsRef.on("value", dataSnapShots => {
+            tags = [];
+            console.log(dataSnapShots);
+
+            dataSnapShots.forEach(obj => {
+                let containFeeds = _.filter(feeds, feed => {
+                    return _.includes(feed.tagList, obj.val());
+                });
+                console.log(containFeeds[0].downloadURL);
+                tags.push({
+                    id: obj.key,
+                    name: obj.val(),
+                    img: containFeeds[0].downloadURL,
+                    count: containFeeds.length
+                });
+            });
+
+            this.setState({
+                tags
+            });
+        });
+
+        // this.setState({
+        //     tags
+        // });
     }
 
     render() {
@@ -24,9 +72,16 @@ class FeedPage extends Component {
                     <button className="col-4 plus">+</button>
                 </nav>
                 <div className="container-tagImg">
-                    <Feed img={testImg} hashtag="#Date_look" count="1000" />
-                    <Feed img={testImg} hashtag="#Girl_crush" count="355,000" />
-                    <Feed img={testImg} hashtag="#rain" count="2000" />
+                    {this.state.tags.map(tag => {
+                        return (
+                            <Feed
+                                img={tag.img}
+                                key={tag.id}
+                                hashtag={"#" + tag.name}
+                                count={tag.count}
+                            />
+                        );
+                    })}
                 </div>
                 <BottomNav className="bottom-nav" />
             </div>

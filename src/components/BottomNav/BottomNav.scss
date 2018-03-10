@@ -1,17 +1,22 @@
 .bottom-nav {
+
 	:global {
 		@import '../../styles/common';
 		.nav-btns-wrapper {
-			width: 100%;
-			position: absolute;
+			position: fixed;
+			height: _rem(60);
 			bottom: 0;
-			background: blue;
 			margin: 0 !important;
 			@include center(x);
 			button {
 				font-size: _rem(12);
 			}
 		}
+		.link-container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
 	}
-}
 
+}
