@@ -31,7 +31,6 @@ class MainPage extends Component {
     }
     componentDidMount() {
         firebase.auth().onAuthStateChanged((user) => {
-            debugger;
             if (user) {
                 this.setState({
                     user
