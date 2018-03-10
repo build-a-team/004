@@ -8,6 +8,13 @@ import testImg from "assets/images/img-card.png";
 const cx = classNames.bind(styles);
 
 class FeedPage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            feeds: []
+        };
+    }
+
     render() {
         return (
             <div className={cx("feed-page")}>
