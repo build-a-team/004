@@ -4,11 +4,8 @@ import MainPage from "containers/MainPage";
 import SignupPage from "containers/SignupPage";
 import VoteResult from "containers/VoteResult";
 import FeedPage from "containers/FeedPage";
-<<<<<<< HEAD
 import UploadPhotoPage from "containers/UploadPhotoPage";
-=======
 import MyPage from "containers/MyPage";
->>>>>>> my page style
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import classNames from "classnames/bind";
 import styles from "./App.scss";
