@@ -1,3 +1,24 @@
 .login-page {
-    background: red;
+    padding: 10px;
+    .form {
+        margin-top: 50px;
+    }
+
+    .login-button {
+        display: block;
+        padding: 10px;
+        background: #ffc34b;
+        width: 100%;
+        border: none;
+        border-radius: 3px;
+    }
+
+    .facebook-login-button {
+    }
+
+    .around-button {
+    }
+
+    button {
+    }
 }

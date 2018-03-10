@@ -6,8 +6,13 @@ const cx = classNames.bind(styles);
 class MainPage extends Component {
     render() {
         return (
-            <div classNames={cx("main-page")}>
+            <div className={cx("main-page")}>
                 <h1>Main Page</h1>
+                <h1>이미지</h1>
+                <div className="row">
+				  <div className="col-sm-6">스투핏</div>
+				  <div className="col-sm-6">그뤠잇</div>
+				</div>
             </div>
         );
     }

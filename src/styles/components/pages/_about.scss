@@ -1,0 +1,65 @@
+.about {
+	.section-01 {
+		.title {
+			text-align: center;
+			margin-bottom: 10rem;
+		}
+		.oasis-stroked-drop {
+			font-size: 4rem;
+		}
+	}
+	
+	.section-02 {
+		text-align: center;
+		margin-bottom: 10rem;
+		h3 {
+			display: inline-block;
+		}
+		h3, span {
+			margin-right: 3rem;
+			@include breakpoint(small) {
+				margin-right: 0.7rem;
+			}
+		}
+	}
+	.section-03 {
+		text-align: center;
+		h3 {
+			margin-bottom: 2.5rem;
+		}
+		.seperator:before {
+			color: #E7AD1B;
+		}
+	}
+	img {
+		width: 16rem;
+	}
+	.seperator {
+		text-align: center;
+		margin: 10rem 0;
+	}
+	.back-logo {
+		font-size: 15rem;
+		right: 0;
+		float: right;
+		margin-right: -3.5rem;
+		margin-bottom: 3.5rem;
+	}
+	@include breakpoint(small) {
+		.page {
+			text-align: center;
+		}
+		.section-03 {
+			margin-bottom: 5rem;
+		}
+		.back-logo {
+			float: inherit;
+			right: inherit;
+			font-size: 10rem;
+			// margin-right: 1rem;
+			// margin-top: 5rem;
+			margin: 0 auto;
+		}
+	}
+
+}

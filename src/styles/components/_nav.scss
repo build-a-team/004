@@ -1,0 +1,40 @@
+#nav {
+	max-width: 60rem;
+	text-align: right;
+	margin: 0 auto;
+	.oasis {
+		&:before {
+			color: #E64981;
+		}
+	}
+	.oasis-nav_home {
+		font-size: 1.5rem;
+	}
+	.oasis-nav_about {
+		font-size: 3rem;
+		margin-left: 1rem;
+	}
+	@include breakpoint(small) {
+		text-align: center;
+	}
+}
+
+body:not(.home) {
+	#nav {
+		position: absolute;
+		right: 4rem;
+		top: 1.5rem;
+
+	}
+	@include breakpoint(small) {
+		#nav {
+			right: 2.5rem;
+			.oasis-nav_home {
+				font-size: 1rem;
+			}
+			.oasis-nav_about {
+				font-size: 2rem;
+			}
+		}
+	}
+}
