@@ -1,63 +1,100 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import styles from "./MainPage.scss";
 import classNames from "classnames/bind";
 import BottomNav from "components/BottomNav";
-import _ from 'lodash';
-import firebase from 'config/firebase';
-import Cards from 'components/SwipeCard/Cards';
-import Card from 'components/SwipeCard/CardSwitcher';
-import { log } from 'ruucm-util';
+import _ from "lodash";
+import firebase from "config/firebase";
+import Cards from "components/SwipeCard/Cards";
+import Card from "components/SwipeCard/CardSwitcher";
+import { log } from "ruucm-util";
 
-
-const data = ['Alexandre', 'Thomas', 'Lucien']
+const data = ["Alexandre", "Thomas", "Lucien"];
 const CustomAlertLeft = () => {
-	return <span>Nop</span>
-}
-const CustomAlertRight = () => <span>Ok</span>
+    return <span>Nop</span>;
+};
+const CustomAlertRight = () => <span>Ok</span>;
 
 const cx = classNames.bind(styles);
 
 const rootRef = firebase.database().ref();
-const feedsRef = rootRef.child('feeds');
+const feedsRef = rootRef.child("feeds");
 const timeRef = firebase.database.ServerValue.TIMESTAMP;
 
 class MainPage extends Component {
-    state = { 
-		feeds: [],
-		feed: {}
-	}
-	action(name) {
+    state = {
+        feeds: [],
+        feed: {},
+        user: firebase.auth().currentUser
+    };
+    action(name) {
         console.log(name);
     }
     componentDidMount() {
-        feedsRef.on('value', snap => {
+        feedsRef.on("value", snap => {
             const feeds = [];
             snap.forEach(shot => {
                 feeds.push({ ...shot.val(), key: shot.key });
-			});
+            });
             this.setState({
-				feeds: feeds,
-				feed: feeds[0]
-			});
+                feeds: feeds,
+                feed: feeds[0]
+            });
         });
     }
 
     sumRate(rates) {
-        return _.reduce(rates, function(result, value, key) {
-            return result + _.parseInt(value.rate);
-        }, 0)
+        return _.reduce(
+            rates,
+            function(result, value, key) {
+                return result + _.parseInt(value.rate);
+            },
+            0
+        );
     }
+
+    nextFeed = () => {
+        this.setState({
+            feeds: this.state.feeds.slice(1),
+            feed: this.state.feeds.slice(1)[0]
+        });
+    };
 
     updateRateDown = () => {
         const { key } = this.state.feed;
-        feedsRef.child(key).child('rates').push({ id: timeRef, rate: -1 });
-	}
-	
-    updateRateUp = (data) => {
+        feedsRef
+            .child(key)
+            .child("rates")
+            .push({
+                id: this.state.user,
+                rate: -1
+            });
+        this.nextFeed();
+    };
+
+    updateRateUp = () => {
         const { key } = this.state.feed;
-        feedsRef.child(key).child('rates').push({ id: timeRef, rate: 1 });
-    }
+        feedsRef
+            .child(key)
+            .child("rates")
+            .push({
+                id: this.state.user,
+                rate: 1
+            });
+        this.nextFeed();
+    };
+
+    updateRateSkip = () => {
+        const { key } = this.state.feed;
+        feedsRef
+            .child(key)
+            .child("rates")
+            .push({
+                id: this.state.user,
+                rate: 0
+            });
+        this.nextFeed();
+    };
     render() {
         return (
 			<div className={cx("main-page")}>
@@ -97,7 +134,6 @@ class MainPage extends Component {
 				  	<button onClick={this.updateRateUp}>Great 😍</button>
 				  </div>
 				</div>
-				<BottomNav></BottomNav>
             </div>
         );
     }
