@@ -79,8 +79,14 @@ class UploadPhotoPage extends Component {
                 this.setState({
                     downloadURL
                 });
+                this.handlePostUpload();
             }
         );
+    };
+
+    handlePostUpload = () => {
+        console.log("이따가 DB 정해지면 DB통신 하겠음ㅋ");
+        console.log("이따가 시안 정해지면 리다이렉션 하겠음ㅋ");
     };
 
     render() {
