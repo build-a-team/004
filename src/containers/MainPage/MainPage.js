@@ -14,7 +14,8 @@ const timeRef = firebase.database.ServerValue.TIMESTAMP;
 class MainPage extends Component {
     state = { 
 		feeds: [],
-		feed: {}
+		feed: {},
+		user: firebase.auth().currentUser
 	}
 
     componentDidMount() {
@@ -23,28 +24,48 @@ class MainPage extends Component {
             snap.forEach(shot => {
                 feeds.push({ ...shot.val(), key: shot.key });
 			});
-			debugger;
-            this.setState({
+			this.setState({
 				feeds: feeds,
 				feed: feeds[0]
 			});
-        });
-    }
+		});
+	}
 
     sumRate(rates) {
         return _.reduce(rates, function(result, value, key) {
             return result + _.parseInt(value.rate);
         }, 0)
-    }
+	}
+	
+	nextFeed = () => {
+		this.setState({
+			feeds: this.state.feeds.slice(1),
+			feed: this.state.feeds.slice(1)[0]
+		});
+	}
 
     updateRateDown = () => {
         const { key } = this.state.feed;
-        feedsRef.child(key).child('rates').push({ id: timeRef, rate: -1 });
+		feedsRef.child(key).child('rates').push({ 
+			id: this.state.user, rate: -1
+		});
+		this.nextFeed();
 	}
 	
-    updateRateUp = (data) => {
-        const { key } = this.state.feed;
-        feedsRef.child(key).child('rates').push({ id: timeRef, rate: 1 });
+    updateRateUp = () => {
+		const { key } = this.state.feed;
+        feedsRef.child(key).child('rates').push({ 
+			id: this.state.user, rate: 1 
+		});
+		this.nextFeed();
+    }
+	
+    updateRateSkip = () => {
+		const { key } = this.state.feed;
+        feedsRef.child(key).child('rates').push({ 
+			id: this.state.user, rate: 0 
+		});
+		this.nextFeed();
     }
 	
     render() {
@@ -52,8 +73,8 @@ class MainPage extends Component {
 			<div className={cx("main-page")}>
             	<nav className={cx("main-nav")}>
 					{
-						_.map(this.state.feed.tags, tag => {
-							return <button className="hash-tag">#{tag}}</button>
+						_.map(this.state.feed.tagList, tag => {
+							return <button className="hash-tag">#{tag}</button>
 						})
 					}
             		<button className="show-result"><Link to="/vote-result">결과보기</Link>{this.sumRate(this.state.feed.rates)}</button>
