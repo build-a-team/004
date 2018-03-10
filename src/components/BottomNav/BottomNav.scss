@@ -29,9 +29,19 @@
                 justify-content: center;
                 align-items: center;
                 color: #d8d8d8;
+                span {
+                    &:before{
+                        color: #D8D8D8;
+                    }
+                }
                 &.active {
                     color: #1d20ff;
                     border-top: 2px solid #1d20ff;
+                    span {
+                        &:before{
+                            color: #1d20ff;
+                        }
+                    }
                 }
             }
         }
