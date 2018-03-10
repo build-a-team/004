@@ -14,18 +14,18 @@ class SignupPage extends Component {
 
     render() {
         return (
-            <div classNames={cx("login-page")}>
+            <div className={cx("login-page")}>
                 <h1>Signup Page</h1>
-                <div classNames={cx("form")}>
-                    <div classNames="form-group">
+                <div className={cx("form")}>
+                    <div className="form-group">
                         <label>이메일</label>
                         <input type="text" name="email" />
                     </div>
-                    <div classNames="form-group">
+                    <div className="form-group">
                         <label>비밀번호</label>
                         <input type="password" name="password" />
                     </div>
-                    <div classNames="form-group">
+                    <div className="form-group">
                         <button>로그인</button>
                     </div>
                 </div>
