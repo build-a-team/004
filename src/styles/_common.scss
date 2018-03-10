@@ -1,0 +1,55 @@
+// Skel Lib 
+@import 'libs/vars';
+@import 'libs/ruucm-functions';
+@import 'libs/mixins';
+@import 'libs/skel';
+
+// Ruucm Mixins
+@import "libs/bourbon/bourbon";
+@import 'libs/ruucm-mixins';
+
+
+@include skel-breakpoints((
+  xlarge: '(max-width: 1680px)',
+  large: '(max-width: 1280px)',
+  medium: '(max-width: 980px)',
+  small: '(max-width: 736px)',
+  xsmall: '(max-width: 480px)',
+  xxsmall: '(max-width: 360px)'
+));
+@include skel-layout((
+  reset: 'full',
+  boxModel: 'border',
+  grid: ( gutters: 2rem)
+));
+
+// Bootstrap Grid Only
+$enable-flex:               true;
+$enable-grid-classes:       true;
+
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+// @import 'bootstrap/scss/reboot';
+@import 'bootstrap/scss/grid';
+
+// // Base.
+// @import 'base/fonts';
+@import 'base/typography';
+
+// // Layout
+// @import 'layout/page';
+
+// // Github Style Code Syntax
+// @import 'highlight';
+
+// // Components
+// @import 'components/ruucm-grid';
+// @import 'components/header';
+// @import 'components/nav';
+// @import 'components/footer';
+// @import 'components/pages/home';
+// @import 'components/pages/about';
+// @import 'components/pages/resource-category';
+
+

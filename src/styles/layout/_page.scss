@@ -1,0 +1,35 @@
+/* Basic */
+
+// MSIE: Required for IEMobile.
+@-ms-viewport {
+	width: device-width;
+} // MSIE: Prevents scrollbar from overlapping content.
+body {
+	-ms-overflow-style: scrollbar;
+	background: _palette(bg);
+}
+// Ensures page width is always >=320px.
+@include breakpoint(xsmall) {
+	html,
+	body {
+		min-width: 320px;
+	}
+}
+
+
+#content {
+	.wrapper {
+		max-width: 60rem;
+		margin: 0 auto;
+		@include breakpoint(xsmall) {
+			max-width: 20rem;
+		}
+	}
+}
+
+
+.page {
+	padding-bottom: 3rem;
+	height: 100%;
+	position: relative;
+}

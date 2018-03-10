@@ -1,0 +1,63 @@
+// Misc.
+$misc: ( z-index-base: 10000,
+z-index-high: 20000,
+overlay-opacity: 0.5,
+lightbox-opacity: 0.75,
+gallery-limit: 32,
+items-limit: 16);
+
+// Duration
+$duration: (
+	transition: 320ms,
+	sand-hover: 1000ms,
+);
+
+// Size.
+$size: (
+	content-box: 59rem,
+	border-radius: 0,
+	border-radius-alt: 0,
+	border-width: 0,
+	element-height: 0,
+	element-margin: 0,
+	gutter: 0,
+	inner: 0,
+
+	padding: ( default: 0,
+	xlarge: 0,
+	large: 0,
+	medium: 0,
+	small: 0)
+);
+
+// Font.
+$font: (
+	family: ( 'AppleSDGothicNeo', Helvetica, sans-serif),
+	family-special: ('BMDOHYEON', Helvetica, sans-serif),
+	family-numbering: ('12Sabon*13232-Italic', monospace),
+	family-subtitle: ('AdelleBasic-Bold', monospace),
+	family-beus: ('CandlescriptDemoVersion', monospace),
+	weight: 400,
+	weight-bold: 700,
+	kerning: -0.05em,
+	kerning-alt: 0.125em
+);
+
+// Palette.
+$palette: (
+	color1: #000,
+
+	bg: #F1F3F5,
+	bg-alt: #000,
+	fg: #fff,
+	fg-bold: #f5a623,
+	fg-alt: #000,
+
+	invert: (
+		bg: #000000,
+		bg-alt: #000,
+		fg: #000,
+		fg-bold: #000,
+		fg-light: #000,
+	)
+);
