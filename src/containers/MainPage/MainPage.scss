@@ -1,4 +1,6 @@
 .main-page {
+	width: 100%;
+	height: 100%;
 	:global {
 		@import '../../styles/common';
 		.main-nav {
@@ -23,11 +25,6 @@
 		.select-btns-wrapper {
 			button {
 				font-size: _rem(14);
-			}
-		}
-		.nav-btns-wrapper {
-			button {
-				font-size: _rem(12);
 			}
 		}
 	}
