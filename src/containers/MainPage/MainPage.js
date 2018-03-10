@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import styles from "./MainPage.scss";
 import classNames from "classnames/bind";
+import BottomNav from "components/BottomNav";
 const cx = classNames.bind(styles);
 
 class MainPage extends Component {
@@ -10,7 +12,7 @@ class MainPage extends Component {
             	<nav className={cx("main-nav")}>
             		<button className="hash-tag">#해시태그</button>
             		<button className="hash-tag">#해시태그</button>
-            		<button className="show-result">결과보기</button>
+            		<button className="show-result"><Link to="/vote-result">결과보기</Link></button>
             	</nav>
                 <div className="img">이미지</div>
                 <div className="row select-btns-wrapper">
@@ -21,20 +23,7 @@ class MainPage extends Component {
 				  	<button>그뤠잇</button>
 				  </div>
 				</div>
-				<div className="row nav-btns-wrapper">
-				  <div className="col-3">
-				  	<button>그뤠잇</button>
-				  </div>
-				  <div className="col-3">
-				  	<button>해시태그</button>
-				  </div>
-				  <div className="col-3">
-				  	<button>글쓰기</button>
-				  </div>
-				  <div className="col-3">
-				  	<button>마이페이지</button>
-				  </div>
-				</div>
+				<BottomNav></BottomNav>
             </div>
         );
     }
