@@ -66,11 +66,14 @@ class FeedPage extends Component {
     render() {
         return (
             <div className={cx("feed-page")}>
-                <nav className={cx("feed-nav")}>
-                    <button className="col-4 hash-tag">#해시태그</button>
-                    <button className="col-4 hash-tag">#해시태그</button>
-                    <button className="col-4 plus">+</button>
-                </nav>
+                <div className="main-header">
+                    <h1 className="main-title">Feed</h1>
+                </div>
+                <div className={cx("feed-search-tag")}>
+                    <span className={cx("tag")}>#Girl</span>
+                    <span className={cx("tag")}>#Daily_look</span>
+                    <span className={cx("tag")}>#Lovely</span>
+                </div>
                 <div className="container-tagImg">
                     {this.state.tags.map(tag => {
                         return (
