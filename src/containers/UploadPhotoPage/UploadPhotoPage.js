@@ -123,7 +123,7 @@ class UploadPhotoPage extends Component {
                     multi
                     onChange={this.handleSelectChange}
                     options={this.state.options}
-                    placeholder="Select your favourite(s)"
+                    placeholder="태그를 입력해주세요"
                     // removeSelected={this.state.removeSelected}
                     // rtl={this.state.rtl}
                     simpleValue
