@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import LoginPage from "containers/LoginPage";
 import MainPage from "containers/MainPage";
 import SignupPage from "containers/SignupPage";
+import FeedPage from "containers/FeedPage";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import classNames from "classnames/bind";
 import styles from "./App.scss";
@@ -17,6 +18,7 @@ class App extends Component {
                         <Route path="/" exact component={MainPage} />
                         <Route path="/login" component={LoginPage} />
                         <Route path="/signup" component={SignupPage} />
+                        <Route path="/feed" component={FeedPage} />
                         {/* Route Page */}
                     </Switch>
                 </div>
