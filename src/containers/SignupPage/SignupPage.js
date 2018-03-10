@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { withRouter, Link } from "react-router-dom";
+import InputField from "components/UI/InputField";
 import firebase from "config/firebase";
 import classNames from "classnames/bind";
 import styles from "./SignupPage.scss";
@@ -32,6 +34,7 @@ class SignupPage extends Component {
                     email: "",
                     password: ""
                 });
+                this.props.history.push("/");
                 console.log(response);
             })
             .catch(function(error) {
@@ -56,29 +59,30 @@ class SignupPage extends Component {
             <div className={cx("signup-page")}>
                 <h1>Signup Page</h1>
                 <div className={cx("form")}>
-                    <form onSubmit={event => this.handleSignup(event)}>
-                        <div className="form-group">
-                            <label>이메일</label>
-                            <input
-                                type="text"
-                                name="email"
-                                value={this.state.email}
-                                onChange={this.handleChange}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label>비밀번호</label>
-                            <input
-                                type="password"
-                                name="password"
-                                value={this.state.password}
-                                onChange={this.handleChange}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <button>회원가입</button>
-                            <button onClick={this.signupWithFacebook}>
-                                Facebook 으로 시작하기
+                    <form onSubmit={this.handleLogin}>
+                        <InputField
+                            type="text"
+                            name="email"
+                            placeholder="이메일"
+                            value={this.state.email}
+                            onChange={this.handleChange}
+                        />
+                        <InputField
+                            type="password"
+                            name="password"
+                            placeholder="비밀번호"
+                            value={this.state.password}
+                            onChange={this.handleChange}
+                        />
+                        <div
+                            className="form-group"
+                            style={{ marginBottom: "20px" }}
+                        >
+                            <button
+                                className={cx("login-button")}
+                                onClick={this.handleSignup}
+                            >
+                                회원가입
                             </button>
                         </div>
                     </form>
@@ -88,4 +92,4 @@ class SignupPage extends Component {
     }
 }
 
-export default SignupPage;
+export default withRouter(SignupPage);
