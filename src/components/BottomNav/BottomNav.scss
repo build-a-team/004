@@ -1,6 +1,9 @@
 .bottom-nav {
     :global {
         @import "../../styles/common";
+        .peeker {
+            font-size: _rem(17.5);
+        }
         .nav-btns-wrapper {
             background: white;
             position: absolute;
