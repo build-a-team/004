@@ -67,10 +67,12 @@ class MainPage extends Component {
 							return <button className="hash-tag">#{tag}}</button>
 						})
 					}
-            		<button className="show-result"><Link to="/vote-result">결과보기</Link>{this.sumRate(this.state.feed.rates)}</button>
             	</nav>
-                <div>
-				  <h1>react swipe card</h1>
+                <div className="main-page-wrapper">
+                  <div className="main-header">
+					  <h1 className="main-title">Peeker</h1>
+					  <button className="btn-skip">SIKP</button>
+				  </div>
 				  <Cards
 				    alertRight={<CustomAlertRight />} 
 				    alertLeft={<CustomAlertLeft />} 
@@ -81,18 +83,18 @@ class MainPage extends Component {
 				          key={key}
 				          onSwipeLeft={()=>{this.action('swipe left!!!!!')}}
 				          onSwipeRight={()=>{this.action('swipe right!!!!')}}>
-				        <h2>{item}</h2>
+				        <img src={this.state.feed.downloadURL} alt="" width="100%;" height="100%;" />
 				      </Card>
 				    )}
 				  </Cards>
-					<img src={this.state.feed.downloadURL} alt="" width="100%;" height="100%;" />
+					
 				</div>
                 <div className="row select-btns-wrapper">
 				  <div className="col-6">
-				  	<button onClick={this.updateRateDown}>스투핏</button>
+				  	<button onClick={this.updateRateDown}>Stupid 😅</button>
 				  </div>
 				  <div className="col-6">
-				  	<button onClick={this.updateRateUp}>그뤠잇</button>
+				  	<button onClick={this.updateRateUp}>Great 😍</button>
 				  </div>
 				</div>
 				<BottomNav></BottomNav>
