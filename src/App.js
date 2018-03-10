@@ -12,14 +12,22 @@ import MyPage from "containers/MyPage";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import classNames from "classnames/bind";
 import styles from "./App.scss";
+import Cards from 'components/SwipeCard/Cards';
+import Card from 'components/SwipeCard/CardSwitcher';
+import { log } from 'ruucm-util';
 
 const cx = classNames.bind(styles);
 
+const data = ['Alexandre', 'Thomas', 'Lucien']
+const CustomAlertLeft = () => <span>Nop</span>
+const CustomAlertRight = () => <span>Ok</span>
 class App extends Component {
+    
     render() {
         return (
             <BrowserRouter>
                 <div className={cx("app")}>
+
                     <Switch>
                         <Route path="/" exact component={MainPage} />
                         <Route path="/login" component={LoginPage} />
