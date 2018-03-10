@@ -1,22 +1,36 @@
 .bottom-nav {
-
-	:global {
-		@import '../../styles/common';
-		.nav-btns-wrapper {
-			position: fixed;
-			height: _rem(60);
-			bottom: 0;
-			margin: 0 !important;
-			@include center(x);
-			button {
-				font-size: _rem(12);
-			}
-		}
-		.link-container {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-	}
-
+    :global {
+        @import "../../styles/common";
+        .nav-btns-wrapper {
+            background: white;
+            position: absolute;
+            width: 100%;
+            height: _rem(60);
+            bottom: 0;
+            margin: 0 !important;
+            @include center(x);
+            button {
+                font-size: _rem(12);
+            }
+        }
+        .link-container {
+            padding: 0 !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            a {
+                display: inline-block;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: #d8d8d8;
+                &.active {
+                    color: #1d20ff;
+                    border-top: 2px solid #1d20ff;
+                }
+            }
+        }
+    }
 }
