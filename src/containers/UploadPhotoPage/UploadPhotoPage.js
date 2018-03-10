@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import uuidv1 from "uuid/v1";
 import { Creatable } from "react-select";
 import "react-select/dist/react-select.css";
@@ -102,15 +103,14 @@ class UploadPhotoPage extends Component {
 
         feedsRef.push(feed);
 
-        console.log(downloadURL);
-
         const { tags } = this.state;
 
         for (const tag of tagList) {
-            if (!tags.includes(tag)) {
+            if (!tags || !tags.includes(tag)) {
                 tagsRef.push(tag);
             }
         }
+        this.props.history.push("/");
     };
 
     componentDidMount() {
@@ -204,4 +204,4 @@ class UploadPhotoPage extends Component {
     }
 }
 
-export default UploadPhotoPage;
+export default withRouter(UploadPhotoPage);

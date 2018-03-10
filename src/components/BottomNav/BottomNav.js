@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 
+import firebase from "config/firebase";
 import styles from "./BottomNav.scss";
 import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
@@ -18,7 +19,14 @@ class BottomNav extends Component {
     };
 
     handlePreWrite = event => {
-        this.cameraUpload.click();
+        firebase.auth().onAuthStateChanged(({ email }) => {
+            if (email) {
+                this.cameraUpload.click();
+            } else {
+                alert("로그인이 필요한 서비스입니다.");
+                return;
+            }
+        });
     };
 
     render() {
