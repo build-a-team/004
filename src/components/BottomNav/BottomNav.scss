@@ -1,21 +1,24 @@
 .bottom-nav {
-    :global {
-        @import "../../styles/common";
-        .nav-btns-wrapper {
-            width: 100%;
-            position: absolute;
-            height: _rem(60);
-            bottom: 0;
-            margin: 0 !important;
-            @include center(x);
-            button {
-                font-size: _rem(12);
-            }
-        }
-        .link-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    }
+
+	:global {
+		@import '../../styles/common';
+		.nav-btns-wrapper {
+			width: 100%;
+			position: absolute;
+			height: _rem(60);
+			bottom: 0;
+			background: pink;
+			margin: 0 !important;
+			@include center(x);
+			button {
+				font-size: _rem(12);
+			}
+		}
+		.link-container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+
 }
