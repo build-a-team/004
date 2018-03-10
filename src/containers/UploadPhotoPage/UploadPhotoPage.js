@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import uuidv1 from "uuid/v1";
+import Select from "react-select";
+import "react-select/dist/react-select.css";
 
 import firebase from "config/firebase";
 import classNames from "classnames/bind";
@@ -9,7 +11,15 @@ const cx = classNames.bind(styles);
 class UploadPhotoPage extends Component {
     state = {
         downloadURL: "", // 파이어베이스에 업로드 된 URL
-        src: "" // 미리보기 화면에 이미지를 띄우기 위한 로컬 경로
+        src: "", // 미리보기 화면에 이미지를 띄우기 위한 로컬 경로,
+        options: [
+            { label: "무난", value: "notbad" },
+            { label: "걸크러시", value: "girlCrush" },
+            { label: "화사", value: "starry" },
+            { label: "시크", value: "chic" },
+            { label: "패션왕", value: "passionKing" }
+        ],
+        value: ""
     };
 
     // 업로드 이벤트
@@ -86,7 +96,13 @@ class UploadPhotoPage extends Component {
 
     handlePostUpload = () => {
         console.log("이따가 DB 정해지면 DB통신 하겠음ㅋ");
+        console.log("DB통신할 때 태그값도 보내겠음ㅋ");
         console.log("이따가 시안 정해지면 리다이렉션 하겠음ㅋ");
+    };
+
+    // tag용 함수
+    handleSelectChange = value => {
+        this.setState({ value });
     };
 
     render() {
@@ -100,6 +116,20 @@ class UploadPhotoPage extends Component {
                     height="300"
                     width="400"
                 />
+                <br />
+                <Select
+                    // closeOnSelect={!stayOpen}
+                    // disabled={disabled}
+                    multi
+                    onChange={this.handleSelectChange}
+                    options={this.state.options}
+                    placeholder="Select your favourite(s)"
+                    // removeSelected={this.state.removeSelected}
+                    // rtl={this.state.rtl}
+                    simpleValue
+                    value={this.state.value}
+                />
+                <br />
                 <button onClick={this.handleUpload}>업로드하기</button>
             </div>
         );
