@@ -7,11 +7,33 @@ class MainPage extends Component {
     render() {
         return (
             <div className={cx("main-page")}>
-                <h1>Main Page</h1>
-                <h1>이미지</h1>
-                <div className="row">
-				  <div className="col-sm-6">스투핏</div>
-				  <div className="col-sm-6">그뤠잇</div>
+            	<nav className={cx("main-nav")}>
+            		<button className="hash-tag">#해시태그</button>
+            		<button className="hash-tag">#해시태그</button>
+            		<button className="show-result">결과보기</button>
+            	</nav>
+                <div className="img">이미지</div>
+                <div className="row select-btns-wrapper">
+				  <div className="col-6">
+				  	<button>스투핏</button>
+				  </div>
+				  <div className="col-6">
+				  	<button>그뤠잇</button>
+				  </div>
+				</div>
+				<div className="row nav-btns-wrapper">
+				  <div className="col-3">
+				  	<button>그뤠잇</button>
+				  </div>
+				  <div className="col-3">
+				  	<button>해시태그</button>
+				  </div>
+				  <div className="col-3">
+				  	<button>글쓰기</button>
+				  </div>
+				  <div className="col-3">
+				  	<button>마이페이지</button>
+				  </div>
 				</div>
             </div>
         );
