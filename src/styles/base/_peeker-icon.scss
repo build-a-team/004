@@ -13,19 +13,30 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.peeker-fill-1:before {
+  content: "\e984";
+  color: #d8d8d8;
+}
+.peeker-ic-navi-my:before {
+  content: "\e985";
+  color: #d8d8d8;
+}
+.peeker-ic-navi-select:before {
+  content: "\e986";
+  color: #1a1cff;
+}
+.peeker-ic-navi-upload:before {
+  content: "\e987";
+  color: #d8d8d8;
+}
 .peeker-ic-select-info .path1:before {
   content: "\e981";
-  color: white;
+  color: rgb(255, 255, 255);
 }
 .peeker-ic-select-info .path2:before {
   content: "\e982";
   margin-left: -1em;
-  color: white;
-}
-.peeker-ic-select-info .path3:before {
-  content: "\e983";
-  margin-left: -1em;
-  color: #424242;
+  color: rgb(66, 66, 66);
 }
 .peeker-page-1:before {
   content: "\e900";
@@ -670,5 +681,3 @@
   margin-left: -1.748046875em;
   color: rgb(255, 214, 32);
 }
-
-

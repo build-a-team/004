@@ -10,9 +10,9 @@ import Card from "components/SwipeCard/CardSwitcher";
 import { log } from "ruucm-util";
 
 const CustomAlertLeft = () => {
-    return <span>Nop</span>;
+    return <span>Stupid 😅</span>;
 };
-const CustomAlertRight = () => <span>Ok</span>;
+const CustomAlertRight = () => <span>Great 😍</span>;
 
 const cx = classNames.bind(styles);
 
