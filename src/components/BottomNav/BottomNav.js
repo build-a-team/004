@@ -78,6 +78,7 @@ class BottomNav extends Component {
                     return i === 2 ? (
                         <div className="col-3 link-container">
                             <a onClick={this.handlePreWrite}>Upload</a>
+
                             <input
                                 type="file"
                                 style={{ display: "none" }}

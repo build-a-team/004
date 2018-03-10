@@ -3,10 +3,10 @@
     background: white;
     border: solid 0.5px #979797;
     margin-top: 50px !important;
-    border: 1px solid #ccc !important;
+    border: solid 0.5px #eaeaea !important;
     border-radius: 1.5px;
 
-    padding: 10px !important;
+    padding: 10px 20px !important;
 
     .feed-img-wrap {
         margin-top: -35px;
@@ -27,10 +27,29 @@
         .hash-tag {
             position: absolute;
             left: 0;
+            font-family: Gotham;
+            font-size: 18px;
+            font-weight: bold;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: normal;
+            letter-spacing: -0.5px;
+            text-align: left;
+            color: #424242;
         }
         .feed-count {
             position: absolute;
             right: 0;
+
+            font-family: Gotham;
+            font-size: 12px;
+            font-weight: bold;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: normal;
+            letter-spacing: -0.3px;
+            text-align: left;
+            color: #9b9b9b;
         }
     }
 }
