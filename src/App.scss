@@ -4,7 +4,7 @@
     @import "styles/base/peeker-icon";
     .app {
         max-width: _rem(360);
-        // height: _rem(640);
+        height: 100vh;
         margin: 0 auto;
         border: 1px solid red;
         position: relative;
