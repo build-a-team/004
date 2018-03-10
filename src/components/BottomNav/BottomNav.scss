@@ -1,0 +1,17 @@
+.bottom-nav {
+	:global {
+		@import '../../styles/common';
+		background: blue;
+		.select-btns-wrapper {
+			button {
+				font-size: _rem(14);
+			}
+		}
+		.nav-btns-wrapper {
+			button {
+				font-size: _rem(12);
+			}
+		}
+	}
+}
+

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styles from "./MainPage.scss";
 import classNames from "classnames/bind";
+import BottomNav from "components/BottomNav";
 const cx = classNames.bind(styles);
 
 class MainPage extends Component {
@@ -21,20 +22,7 @@ class MainPage extends Component {
 				  	<button>그뤠잇</button>
 				  </div>
 				</div>
-				<div className="row nav-btns-wrapper">
-				  <div className="col-3">
-				  	<button>그뤠잇</button>
-				  </div>
-				  <div className="col-3">
-				  	<button>해시태그</button>
-				  </div>
-				  <div className="col-3">
-				  	<button>글쓰기</button>
-				  </div>
-				  <div className="col-3">
-				  	<button>마이페이지</button>
-				  </div>
-				</div>
+				<BottomNav></BottomNav>
             </div>
         );
     }
