@@ -1,0 +1,21 @@
+.upload-page {
+    padding-top: 24px;
+    .upload-header {
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #ececec;
+        h1 {
+            font-family: Gotham;
+            font-size: 18px;
+            font-weight: bold;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: normal;
+            letter-spacing: -0.5px;
+            text-align: center;
+            color: #424242;
+        }
+    }
+}
