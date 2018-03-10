@@ -7,10 +7,10 @@
 	:global {
 		@import '../../styles/common';
 		.main-page-wrapper {
-			padding: 0 _rem(18);
 			padding-top: _rem(62.5);
 		}
 		.main-header {
+			padding: 0 18px;
 			.main-title {
 				font-size: _rem(32);
 				display: inline-block;
@@ -54,6 +54,9 @@
 		}
 
 		// Swipe Card Style!
+		.cards-wrapper {
+			position: relative;
+		}
 		img {
 		  width: 100%;
 		}
@@ -70,17 +73,20 @@
 		  margin: 0 auto;
 		  margin-top: _rem(18);
 		  position: relative;
-		  height: _rem(324);
+		  height: _rem(400);
 		  width: 100%;
 		  overflow: hidden;
 		}
-
+		#cards {
+			position: relative;
+			height: 100%;
+		}
 		.card {
 		  background-size: cover;
 		  position: absolute;
 		  background: #F8F3F3;
-		  height: 100%;
-		  width: 100%;
+		  height: _rem(324);
+		  width: calc(100% - 18px);
 		  margin: 0 auto;
 		  transition: box-shadow .3s;
 		  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
@@ -89,6 +95,36 @@
 		  border: none;
 		  img {
 		  	border-radius: 8px;
+		  }
+		  &:nth-of-type(1) {
+		  	position: absolute;
+		  	top: 0;
+		  	max-width: 72%;
+		  	img {
+		  		display: none;
+		  	}
+		  }
+		  &:nth-of-type(2) {
+		  	position: absolute;
+		  	top: -1rem;
+		  	max-width: 83%;
+		  	-webkit-box-shadow: 0px 10px 45px 0px rgba(0,0,0,0.15);
+			-moz-box-shadow: 0px 10px 45px 0px rgba(0,0,0,0.15);
+			box-shadow: 0px 10px 45px 0px rgba(0,0,0,0.15);
+		  	img {
+		  		display: none;
+		  	}
+		  }
+		  &:nth-of-type(3) {
+		  	position: absolute;
+		  	top: -2rem;
+		  }
+		  &:last-child {
+		  	width: calc(100% - 18px) !important;
+		  	max-width: 100% !important;
+		  	img {
+		  		display: inherit !important;
+		  	}
 		  }
 		}
 
@@ -148,5 +184,25 @@
 		  transform: translate(-50%, 0);
 		  margin-left: 50%;
 		 }
+
+		// Swipe Icon
+		.peeker-ic-select-info {
+			position: absolute;
+			right: 25px;
+			font-size: 3rem;
+			top: 14px;
+			z-index: 99;
+			cursor: pointer;
+			&:hover,
+			&:active,
+			&:focus {
+				.path1:before, .path2:before {
+					color: rgb(23, 28, 240);
+				}
+				.path3:before {
+					color: white;
+				}
+			}
+		}
 	}
 }
