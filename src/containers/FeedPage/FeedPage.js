@@ -9,7 +9,16 @@ class FeedPage extends Component {
     render() {
         return (
             <div className={cx("feed-page")}>
-                <header className=""></header>        
+                <nav className={cx("feed-nav")}>
+            		<button className="col-4 hash-tag">#해시태그</button>
+            		<button className="col-4 hash-tag">#해시태그</button>
+            		<button className="col-4 plus">+</button>
+            	</nav>
+                <div className="container-tagImg">
+                    <div className="col-12 tag-Img">#데이트룩</div>
+                    <div className="col-12 tag-Img">#데이트룩</div>
+                    <div className="col-12 tag-Img">#데이트룩</div>
+                </div>       
             </div>
         );
     }
