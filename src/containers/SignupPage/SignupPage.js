@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import classNames from "classnames/bind";
-import styles from "./LoginPage.scss";
+import styles from "./SignupPage.scss";
 const cx = classNames.bind(styles);
 
-class LoginPage extends Component {
+class SignupPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,7 +15,7 @@ class LoginPage extends Component {
     render() {
         return (
             <div classNames={cx("login-page")}>
-                <h1>Login Page</h1>
+                <h1>Signup Page</h1>
                 <div classNames={cx("form")}>
                     <div classNames="form-group">
                         <label>이메일</label>
@@ -34,4 +34,4 @@ class LoginPage extends Component {
     }
 }
 
-export default LoginPage;
+export default SignupPage;
