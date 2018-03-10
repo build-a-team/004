@@ -1,5 +1,7 @@
 :global {
-	@import 'styles/common';
+
+  @import "styles/common";
+
 	.app {
 		max-width: _rem(360);
 		height: _rem(640);
@@ -8,3 +10,4 @@
 		position: relative;
 	}
 }
+

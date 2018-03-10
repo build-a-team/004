@@ -1,0 +1,36 @@
+.feed-page {
+    :global {
+        @import "../../styles/common";
+        .feed-nav {
+            height: _rem(68);
+            border: solid 0.5px #979797;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .hash-tag,
+        .plus {
+            font-size: _rem(20);
+            border: none;
+        }
+        .container-tagImg {
+            padding-left: _rem(12.5);
+            padding-right: _rem(12.5);
+        }
+
+        .bottom-nav {
+            background: red;
+        }
+
+        .select-btns-wrapper {
+            button {
+                font-size: _rem(14);
+            }
+        }
+        .nav-btns-wrapper {
+            button {
+                font-size: _rem(12);
+            }
+        }
+    }
+}
