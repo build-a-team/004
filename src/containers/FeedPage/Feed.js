@@ -12,8 +12,9 @@ class Feed extends Component {
     }
 
     sumRate(rates) {
+        debugger;
         return _.reduce(rates, function(result, value, key) {
-            return result + _.parseInt(value);
+            return result + _.parseInt(value.rate);
         }, 0)
     }
 
@@ -30,12 +31,15 @@ class Feed extends Component {
         return (
             <div>
                 <div>
-                    <img src={this.props.data.imageUrl} alt="" />
+                    <img src={this.props.data.downloadURL} alt="" width="100px;" height="100px;" />
+                </div>
+                <div>
+                    {this.props.data.userId}
                 </div>
                 <div>{this.sumRate(this.props.data.rates)}</div>
                 <div>
-                    <button onClick={this.updateRateDown}>Up</button>
-                    <button onClick={this.updateRateUp}>Down</button>
+                    <button onClick={this.updateRateDown}>Down</button>
+                    <button onClick={this.updateRateUp}>Up</button>
                 </div>
             </div>
             
