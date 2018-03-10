@@ -9,7 +9,9 @@ const cx = classNames.bind(styles);
 class UploadPhotoPage extends Component {
     state = {
         downloadURL: "", // 파이어베이스에 업로드 된 URL
-        src: "" // 미리보기 화면에 이미지를 띄우기 위한 로컬 경로
+        src: "", // 미리보기 화면에 이미지를 띄우기 위한 로컬 경로
+        userId: "user00", //
+        rate: "85"
     };
 
     // 업로드 이벤트
@@ -85,9 +87,46 @@ class UploadPhotoPage extends Component {
     };
 
     handlePostUpload = () => {
-        console.log("이따가 DB 정해지면 DB통신 하겠음ㅋ");
+        const { userId, downloadURL, rate } = this.state;
+
+        const rootRef = firebase.database().ref();
+        const tasksRef = rootRef.child("feeds");
+        const timeRef = firebase.database.ServerValue.TIMESTAMP;
+
+        const feed = {
+            userId,
+            downloadURL,
+            rate
+        };
+
+        tasksRef.push(feed);
+
+        // firebase
+        //     .database()
+        //     .ref("feed/" + userId)
+        //     .set({
+        //         userId,
+        //         downloadURL
+        //     });
+
+        console.log("DB통신 추가중");
         console.log("이따가 시안 정해지면 리다이렉션 하겠음ㅋ");
     };
+
+    componentDidMount() {
+        firebase
+            .database()
+            .ref("/feeds")
+            .once("value")
+            .then(snapshot => {
+                const feedsObjectJson = snapshot.val();
+                const feeds = new Map();
+                for (const [key, value] of Object.entries(feedsObjectJson)) {
+                    feeds.set(key, value);
+                }
+                console.log(feeds);
+            });
+    }
 
     render() {
         return (
