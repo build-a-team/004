@@ -51,6 +51,38 @@ class SignupPage extends Component {
         ev.preventDefault();
     };
 
+    signupWithFacebook = () => {
+        var provider = new firebase.auth.FacebookAuthProvider();
+        provider.addScope("user_birthday");
+        firebase.auth().languageCode = "fr_FR";
+        provider.setCustomParameters({
+            display: "popup"
+        });
+
+        firebase
+            .auth()
+            .signInWithPopup(provider)
+            .then(function(result) {
+                // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+                var token = result.credential.accessToken;
+                // The signed-in user info.
+                var user = result.user;
+                // ...
+
+                alert("Facebook 로그인");
+            })
+            .catch(function(error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // The email of the user's account used.
+                var email = error.email;
+                // The firebase.auth.AuthCredential type that was used.
+                var credential = error.credential;
+                // ...
+            });
+    };
+
     render() {
         return (
             <div className={cx("signup-page")}>
@@ -76,7 +108,10 @@ class SignupPage extends Component {
                             />
                         </div>
                         <div className="form-group">
-                            <button>로그인</button>
+                            <button>회원가입</button>
+                            <button onClick={this.signupWithFacebook}>
+                                Facebook 으로 시작하기
+                            </button>
                         </div>
                     </form>
                 </div>
