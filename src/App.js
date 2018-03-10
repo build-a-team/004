@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import LoginPage from "containers/LoginPage/LoginPage";
+import LoginPage from "containers/LoginPage";
 import MainPage from "containers/MainPage/MainPage";
 import SignupPage from "containers/SignupPage";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
