@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import uuidv1 from "uuid/v1";
-import Select from "react-select";
+import { Creatable } from "react-select";
 import "react-select/dist/react-select.css";
 
 import firebase from "config/firebase";
@@ -12,15 +12,9 @@ class UploadPhotoPage extends Component {
     state = {
         downloadURL: "", // 파이어베이스에 업로드 된 URL
         src: "", // 미리보기 화면에 이미지를 띄우기 위한 로컬 경로,
-        options: [
-            { label: "무난", value: "notbad" },
-            { label: "걸크러시", value: "girlCrush" },
-            { label: "화사", value: "starry" },
-            { label: "시크", value: "chic" },
-            { label: "패션왕", value: "passionKing" }
-        ],
+        options: [], // 파이어베이스에서 tag 리스트를 받아온다.
         value: "",
-        userId: ""
+        email: ""
     };
 
     handlePreUpload = event => {
@@ -78,7 +72,6 @@ class UploadPhotoPage extends Component {
                 // Upload completed successfully, now we can get the download URL
                 // 파이어베이스에 받아오는 url.
                 const downloadURL = uploadTask.snapshot.downloadURL;
-                console.log(downloadURL);
                 this.setState({
                     downloadURL
                 });
@@ -89,37 +82,68 @@ class UploadPhotoPage extends Component {
 
     // tag용 함수
     handleSelectChange = value => {
-        this.setState({ value });
+        const comma = /\s*,\s*/;
+        const tagList = value.split(comma);
+        this.setState({ value, tagList });
     };
 
     handlePostUpload = () => {
-        const { userId, downloadURL } = this.state;
+        const { email, downloadURL, tagList } = this.state;
 
         const rootRef = firebase.database().ref();
-        const tasksRef = rootRef.child("feeds");
+        const feedsRef = rootRef.child("feeds");
+        const tagsRef = rootRef.child("tags");
 
         const feed = {
-            userId,
-            downloadURL
+            email,
+            downloadURL,
+            tagList
         };
 
-        tasksRef.push(feed);
+        feedsRef.push(feed);
+
+        const { tags } = this.state;
+
+        for (const tag of tagList) {
+            if (!tags.includes(tag)) {
+                tagsRef.push(tag);
+            }
+        }
     };
 
     componentDidMount() {
-        // const userInfo = firebase.auth().currentUser;
-        // firebase
-        //     .database()
-        //     .ref("/feeds")
-        //     .once("value")
-        //     .then(snapshot => {
-        //         const feedsObjectJson = snapshot.val();
-        //         const feeds = new Map();
-        //         for (const [key, value] of Object.entries(feedsObjectJson)) {
-        //             feeds.set(key, value);
-        //         }
-        //         console.log(feeds);
-        //     });
+        firebase.auth().onAuthStateChanged(({ email }) => {
+            if (email) {
+                this.setState({
+                    email
+                });
+            } else {
+                console.log("You are not signed in");
+            }
+        });
+
+        firebase
+            .database()
+            .ref("/tags")
+            .once("value")
+            .then(snapshot => {
+                const tagsJson = snapshot.val();
+                let tags = [];
+                for (const tag of Object.values(tagsJson)) {
+                    tags = [...tags, tag];
+                }
+                const options = tags.map(tag => {
+                    return {
+                        label: tag,
+                        value: tag
+                    };
+                });
+
+                this.setState({
+                    options,
+                    tags
+                });
+            });
     }
 
     render() {
@@ -144,9 +168,8 @@ class UploadPhotoPage extends Component {
                     width="400"
                 />
                 <br />
-                <Select
-                    // closeOnSelect={!stayOpen}
-                    // disabled={disabled}
+                <Creatable
+                    // closeOnSelect
                     multi
                     onChange={this.handleSelectChange}
                     options={this.state.options}
