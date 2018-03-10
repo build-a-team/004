@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import firebase from "config/firebase";
 import classNames from "classnames/bind";
 import styles from "./FeedPage.scss";
+import BottomNav from "components/BottomNav";
 const cx = classNames.bind(styles);
 
 
@@ -18,7 +19,8 @@ class FeedPage extends Component {
                     <div className="col-12 tag-Img">#데이트룩</div>
                     <div className="col-12 tag-Img">#데이트룩</div>
                     <div className="col-12 tag-Img">#데이트룩</div>
-                </div>       
+                </div>
+                <BottomNav className="bottom-nav"/>          
             </div>
         );
     }

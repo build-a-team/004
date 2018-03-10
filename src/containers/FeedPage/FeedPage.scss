@@ -25,7 +25,11 @@
       display: flex;
       justify-content: center;
       align-items: center;
-		}
+	  }
+	  .bottom-nav {
+		background: red;
+	  }
+	  
 		.select-btns-wrapper {
 			button {
 				font-size: _rem(14);
