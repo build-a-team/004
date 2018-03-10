@@ -15,8 +15,10 @@
         box-shadow: 1px 1px 1px #ccc;
         img {
             width: 100%;
-            height: 130px;
-            border-radius: 1.5px;
+            height: auto;
+            border-radius: 3px;
+            object-fit: cover;
+            margin-bottom: -7px;
         }
     }
 

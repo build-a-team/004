@@ -11,9 +11,9 @@ import { log } from "ruucm-util";
 
 const data = ["Alexandre", "Thomas", "Lucien"];
 const CustomAlertLeft = () => {
-    return <span>Nop</span>;
+    return <span>Stupid 😅</span>;
 };
-const CustomAlertRight = () => <span>Ok</span>;
+const CustomAlertRight = () => <span>Great 😍</span>;
 
 const cx = classNames.bind(styles);
 
