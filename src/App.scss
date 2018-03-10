@@ -1,2 +1,13 @@
-.app {
+:global {
+
+  @import "styles/common";
+
+	.app {
+		max-width: _rem(360);
+		height: _rem(640);
+		margin: 0 auto;
+		border: 1px solid red;
+		position: relative;
+	}
 }
+

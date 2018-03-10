@@ -1,0 +1,17 @@
+.bottom-nav {
+	:global {
+		@import '../../styles/common';
+		.nav-btns-wrapper {
+			width: 100%;
+			position: absolute;
+			bottom: 0;
+			background: blue;
+			margin: 0 !important;
+			@include center(x);
+			button {
+				font-size: _rem(12);
+			}
+		}
+	}
+}
+

@@ -1,0 +1,45 @@
+.feed-page {
+	:global {
+		@import '../../styles/common';
+		.feed-nav {
+			height: _rem(68);
+      border: solid 0.5px #979797;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+		}
+		.hash-tag, .plus{
+      font-size: _rem(20);
+      border: none;
+    }
+		.container-tagImg {
+      padding-left: _rem(12.5);
+      padding-right: _rem(12.5);
+		}
+		.tag-Img {
+      width: 100%;
+      height: _rem(54.5);
+      background: #7F7F7F;
+      border: solid 0.5px #979797;
+      margin-bottom: _rem(19);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+	  }
+	  .bottom-nav {
+		background: red;
+	  }
+	  
+		.select-btns-wrapper {
+			button {
+				font-size: _rem(14);
+			}
+		}
+		.nav-btns-wrapper {
+			button {
+				font-size: _rem(12);
+			}
+		}
+	}
+}
+

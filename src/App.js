@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import LoginPage from "containers/LoginPage/LoginPage";
-import MainPage from "containers/MainPage/MainPage";
-import SignupPage from "containers/SignupPage/SignupPage";
+import LoginPage from "containers/LoginPage";
+import MainPage from "containers/MainPage";
+import SignupPage from "containers/SignupPage";
+import VoteResult from "containers/VoteResult";
+import FeedPage from "containers/FeedPage";
 import UploadPhotoPage from "containers/UploadPhotoPage";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import classNames from "classnames/bind";
@@ -19,6 +21,8 @@ class App extends Component {
                         <Route path="/login" component={LoginPage} />
                         <Route path="/signup" component={SignupPage} />
                         <Route path="/upload" component={UploadPhotoPage} />
+                        <Route path="/vote-result" component={VoteResult} />
+                        <Route path="/feed" component={FeedPage} />
                         {/* Route Page */}
                     </Switch>
                 </div>
