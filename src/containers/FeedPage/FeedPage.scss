@@ -1,6 +1,16 @@
 .feed-page {
+    background: url("assets/images/img-back-yello.png");
+    background-repeat: no-repeat;
+    background-size: contain;
     :global {
         @import "../../styles/common";
+        .main-title {
+            font-size: _rem(32);
+            display: inline-block;
+            color: #424242;
+            padding: 0 _rem(18);
+            padding-top: _rem(62.5);
+        }
         .feed-nav {
             height: _rem(68);
             border: solid 0.5px #979797;

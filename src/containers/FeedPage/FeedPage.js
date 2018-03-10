@@ -66,6 +66,9 @@ class FeedPage extends Component {
     render() {
         return (
             <div className={cx("feed-page")}>
+                <div className="main-header">
+                    <h1 className="main-title">Feed</h1>
+                </div>
                 <div className={cx("feed-search-tag")}>
                     <span className={cx("tag")}>#Girl</span>
                     <span className={cx("tag")}>#Daily_look</span>

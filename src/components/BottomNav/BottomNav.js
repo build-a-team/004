@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter, Link, NavLink } from "react-router-dom";
 
 import firebase from "config/firebase";
 import styles from "./BottomNav.scss";
@@ -76,10 +76,8 @@ class BottomNav extends Component {
             <div className="row nav-btns-wrapper">
                 {LinkText.map((link, i) => {
                     return i === 2 ? (
-                        <div className="col-3">
-                            <button onClick={this.handlePreWrite}>
-                                글쓰기
-                            </button>
+                        <div className="col-3 link-container">
+                            <a onClick={this.handlePreWrite}>글쓰기</a>
                             <input
                                 type="file"
                                 style={{ display: "none" }}
@@ -95,24 +93,13 @@ class BottomNav extends Component {
                         </div>
                     ) : (
                         <div className="col-3 link-container">
-                            <Link
+                            <NavLink
                                 key={`link-${link.path}`}
                                 to={link.path}
-                                style={{
-                                    color:
-                                        this.state.currentIdx === link.idx
-                                            ? "#1d20ff"
-                                            : "#d8d8d8",
-                                    borderTop: `2px solid ${
-                                        this.state.currentIdx === link.idx
-                                            ? "#1d20ff"
-                                            : "transparent"
-                                    }`,
-                                    ...linkStyles.link
-                                }}
+                                exact
                             >
                                 {link.tabName}
-                            </Link>
+                            </NavLink>
                         </div>
                     );
                 })}
