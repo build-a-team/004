@@ -8,6 +8,19 @@
             justify-content: center;
             align-items: center;
         }
+        .feed-search-tag {
+            padding-left: _rem(12.5);
+            padding-right: _rem(12.5);
+            margin-top: 20px;
+            .tag {
+                padding: 10px;
+                border-radius: 4px;
+                background-color: #f1c711;
+                border: solid 0.5px #e7be0e;
+                margin-right: 10px;
+                color: #ac8d05;
+            }
+        }
         .hash-tag,
         .plus {
             font-size: _rem(20);
