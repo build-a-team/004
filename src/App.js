@@ -6,6 +6,7 @@ import VoteResult from "containers/VoteResult";
 import FeedPage from "containers/FeedPage";
 import UploadPhotoPage from "containers/UploadPhotoPage";
 import MyPage from "containers/MyPage";
+import BottomNav from "components/BottomNav";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import classNames from "classnames/bind";
 import styles from "./App.scss";
@@ -33,6 +34,7 @@ class App extends Component {
                         <Route path="/my-page" component={MyPage} />
                         {/* Route Page */}
                     </Switch>
+                    <BottomNav />
                 </div>
             </BrowserRouter>
         );

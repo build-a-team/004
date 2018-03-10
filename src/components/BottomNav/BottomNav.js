@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 import firebase from "config/firebase";
 import styles from "./BottomNav.scss";
 import classNames from "classnames/bind";
-import { Link } from "react-router-dom";
 const cx = classNames.bind(styles);
 
 const linkStyles = {
@@ -70,52 +69,59 @@ class BottomNav extends Component {
     };
 
     render() {
+        let isNavPage =
+            this.props.location.pathname === "/login" ||
+            this.props.location.pathname === "/signup";
+        const bottomNav = (
+            <div className="row nav-btns-wrapper">
+                {LinkText.map((link, i) => {
+                    return i === 2 ? (
+                        <div className="col-3">
+                            <button onClick={this.handlePreWrite}>
+                                글쓰기
+                            </button>
+                            <input
+                                type="file"
+                                style={{ display: "none" }}
+                                capture="camera"
+                                accept="image/*"
+                                ref={input => {
+                                    this.cameraUpload = input;
+                                }}
+                                id="cameraInput"
+                                name="cameraInput"
+                                onChange={this.handleWrite}
+                            />
+                        </div>
+                    ) : (
+                        <div className="col-3 link-container">
+                            <Link
+                                key={`link-${link.path}`}
+                                to={link.path}
+                                style={{
+                                    color:
+                                        this.state.currentIdx === link.idx
+                                            ? "#1d20ff"
+                                            : "#d8d8d8",
+                                    borderTop: `2px solid ${
+                                        this.state.currentIdx === link.idx
+                                            ? "#1d20ff"
+                                            : "transparent"
+                                    }`,
+                                    ...linkStyles.link
+                                }}
+                            >
+                                {link.tabName}
+                            </Link>
+                        </div>
+                    );
+                })}
+            </div>
+        );
+
         return (
             <div className={cx("bottom-nav")}>
-                <div className="row nav-btns-wrapper">
-                    {LinkText.map((link, i) => {
-                        return i === 2 ? (
-                            <div className="col-3">
-                                <button onClick={this.handlePreWrite}>
-                                    글쓰기
-                                </button>
-                                <input
-                                    type="file"
-                                    style={{ display: "none" }}
-                                    capture="camera"
-                                    accept="image/*"
-                                    ref={input => {
-                                        this.cameraUpload = input;
-                                    }}
-                                    id="cameraInput"
-                                    name="cameraInput"
-                                    onChange={this.handleWrite}
-                                />
-                            </div>
-                        ) : (
-                            <div className="col-3 link-container">
-                                <Link
-                                    key={`link-${link.path}`}
-                                    to={link.path}
-                                    style={{
-                                        color:
-                                            this.state.currentIdx === link.idx
-                                                ? "#1d20ff"
-                                                : "#d8d8d8",
-                                        borderTop: `2px solid ${
-                                            this.state.currentIdx === link.idx
-                                                ? "#1d20ff"
-                                                : "transparent"
-                                        }`,
-                                        ...linkStyles.link
-                                    }}
-                                >
-                                    {link.tabName}
-                                </Link>
-                            </div>
-                        );
-                    })}
-                </div>
+                {isNavPage ? null : bottomNav}
             </div>
         );
     }
