@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import InputField from "components/UI/InputField";
 import firebase from "config/firebase";
 import classNames from "classnames/bind";
 import styles from "./LoginPage.scss";
@@ -53,26 +54,22 @@ class LoginPage extends Component {
                 <h1>Login Page</h1>
                 <div className={cx("form")}>
                     <form onSubmit={this.handleLogin}>
+                        <InputField
+                            type="text"
+                            name="email"
+                            placeholder="이메일"
+                            onChange={this.handleChange}
+                        />
+                        <InputField
+                            type="password"
+                            name="password"
+                            placeholder="비밀번호"
+                            onChange={this.handleChange}
+                        />
                         <div className="form-group">
-                            <label>
-                                <input
-                                    type="text"
-                                    name="email"
-                                    onChange={this.handleChange}
-                                />
-                            </label>
-                        </div>
-                        <div className="form-group">
-                            <label>
-                                <input
-                                    type="password"
-                                    name="password"
-                                    onChange={this.handleChange}
-                                />
-                            </label>
-                        </div>
-                        <div className="form-group">
-                            <button>로그인</button>
+                            <button className={cx("login-button")}>
+                                로그인
+                            </button>
                         </div>
                     </form>
                 </div>
