@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import styles from "./MainPage.scss";
 import classNames from "classnames/bind";
 import BottomNav from "components/BottomNav";
@@ -11,7 +12,7 @@ class MainPage extends Component {
             	<nav className={cx("main-nav")}>
             		<button className="hash-tag">#해시태그</button>
             		<button className="hash-tag">#해시태그</button>
-            		<button className="show-result">결과보기</button>
+            		<button className="show-result"><Link to="/vote-result">결과보기</Link></button>
             	</nav>
                 <div className="img">이미지</div>
                 <div className="row select-btns-wrapper">

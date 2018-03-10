@@ -6,7 +6,7 @@
 			position: absolute;
 			bottom: 0;
 			background: blue;
-			margin: 0;
+			margin: 0 !important;
 			@include center(x);
 			button {
 				font-size: _rem(12);
