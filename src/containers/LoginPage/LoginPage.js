@@ -66,10 +66,25 @@ class LoginPage extends Component {
                             placeholder="비밀번호"
                             onChange={this.handleChange}
                         />
-                        <div className="form-group">
+                        <div
+                            className="form-group"
+                            style={{ marginBottom: "20px" }}
+                        >
                             <button className={cx("login-button")}>
                                 로그인
                             </button>
+                        </div>
+                        <div className="form-group row">
+                            <div className={cx("col-sm-6")}>
+                                <button className={cx("facebook-login-button")}>
+                                    Facebook으로 시작하기
+                                </button>
+                            </div>
+                            <div className={cx("col-sm-6")}>
+                                <button className={cx("around-button")}>
+                                    둘러보기
+                                </button>
+                            </div>
                         </div>
                     </form>
                 </div>
