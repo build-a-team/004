@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import uuidv1 from "uuid/v1";
 import { Creatable } from "react-select";
 import "react-select/dist/react-select.css";
@@ -105,13 +106,30 @@ class UploadPhotoPage extends Component {
         const { tags } = this.state;
 
         for (const tag of tagList) {
-            if (!tags.includes(tag)) {
+            if (!tags || !tags.includes(tag)) {
                 tagsRef.push(tag);
             }
         }
+        this.props.history.push("/");
     };
 
     componentDidMount() {
+        const updatingImage = this.props.location.state
+            ? this.props.location.state.updatingImage
+            : null;
+
+        const nextState = {};
+        const reader = new FileReader();
+        reader.onload = e => {
+            nextState.src = e.target.result;
+            this.setState(nextState);
+        };
+        reader.readAsDataURL(updatingImage);
+
+        this.setState({
+            file: updatingImage
+        });
+
         firebase.auth().onAuthStateChanged(({ email }) => {
             if (email) {
                 this.setState({
@@ -149,7 +167,7 @@ class UploadPhotoPage extends Component {
     render() {
         return (
             <div className="App">
-                <input
+                {/* <input
                     type="file"
                     capture="camera"
                     accept="image/*"
@@ -159,7 +177,7 @@ class UploadPhotoPage extends Component {
                     id="cameraInput"
                     name="cameraInput"
                     onChange={this.handlePreUpload}
-                />
+                /> */}
                 <br />
                 <img
                     src={this.state.src}
@@ -186,4 +204,4 @@ class UploadPhotoPage extends Component {
     }
 }
 
-export default UploadPhotoPage;
+export default withRouter(UploadPhotoPage);
