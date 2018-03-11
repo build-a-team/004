@@ -47,6 +47,7 @@ class MainPage extends Component {
             snap.forEach(shot => {
                 feeds.push({ ...shot.val(), key: shot.key });
             });
+            feeds.reverse();
             this.setState({
                 feeds: feeds,
                 feed: feeds[0]
