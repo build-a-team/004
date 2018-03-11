@@ -14,7 +14,7 @@ class UploadPhotoPage extends Component {
         downloadURL: "", // 파이어베이스에 업로드 된 URL
         src: "", // 미리보기 화면에 이미지를 띄우기 위한 로컬 경로,
         options: [], // 파이어베이스에서 tag 리스트를 받아온다.
-        value: "",
+        value: null,
         email: ""
     };
 
