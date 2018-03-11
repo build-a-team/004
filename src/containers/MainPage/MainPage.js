@@ -112,7 +112,7 @@ class MainPage extends Component {
         return (
             <div className={cx("main-page")}>
                 <nav className={cx("main-nav")}>
-                    {this.state.feed.tags &&
+                    {this.state.feed &&
                         _.map(this.state.feed.tags, tag => {
                             return (
                                 <button key={tag} className="hash-tag">
