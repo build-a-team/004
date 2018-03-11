@@ -20,7 +20,7 @@ const linkStyles = {
 };
 const LinkText = [
     {
-        tabName: 'peeker peeker-ic-navi-select',
+        tabName: "peeker peeker-ic-navi-select",
         idx: 0,
         path: "/"
     },
@@ -77,7 +77,16 @@ class BottomNav extends Component {
                 {LinkText.map((link, i) => {
                     return i === 2 ? (
                         <div className="col-3 link-container">
-                            <a onClick={this.handlePreWrite}><span class="peeker peeker-ic-navi-upload"></span></a>
+                            <a
+                                className={
+                                    this.props.location.pathname === "upload"
+                                        ? "active"
+                                        : ""
+                                }
+                                onClick={this.handlePreWrite}
+                            >
+                                <span class="peeker peeker-ic-navi-upload" />
+                            </a>
 
                             <input
                                 type="file"
@@ -99,7 +108,7 @@ class BottomNav extends Component {
                                 to={link.path}
                                 exact
                             >
-                                <span className={link.tabName}></span>
+                                <span className={link.tabName} />
                             </NavLink>
                         </div>
                     );
