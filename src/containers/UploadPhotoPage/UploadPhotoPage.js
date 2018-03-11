@@ -104,10 +104,11 @@ class UploadPhotoPage extends Component {
         feedsRef.push(feed);
 
         const { tags } = this.state;
-
-        for (const tag of tagList) {
-            if (!tags || !tags.includes(tag)) {
-                tagsRef.push(tag);
+        if (tagList) {
+            for (const tag of tagList) {
+                if (!tags || !tags.includes(tag)) {
+                    tagsRef.push(tag);
+                }
             }
         }
         this.props.history.push("/");
