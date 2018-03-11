@@ -8,6 +8,7 @@ import firebase from "config/firebase";
 import Cards from "components/SwipeCard/Cards";
 import Card from "components/SwipeCard/CardSwitcher";
 import { log } from "ruucm-util";
+import logo from "assets/images/ic-main-logo@3x.png";
 
 const CustomAlertLeft = () => {
     return <span>Stupid 😅</span>;
@@ -123,7 +124,7 @@ class MainPage extends Component {
                 </nav>
                 <div className="main-page-wrapper">
                     <div className="main-header">
-                        <h1 className="main-title">Peeker</h1>
+                        <img src={logo} />
                         <button
                             className="btn-skip"
                             onClick={this.updateRateSkip}

@@ -1,223 +1,239 @@
 .main-page {
-	width: 100%;
-	height: 100%;
-	background: url('assets/images/img-back-yello.png');
-	background-repeat: no-repeat;
-	background-size: contain;
-	:global {
-		@import '../../styles/common';
-		.main-page-wrapper {
-			padding-top: _rem(62.5);
-		}
-		.main-header {
-			padding: 0 18px;
-			.main-title {
-				font-size: _rem(32);
-				display: inline-block;
-				color: #424242;
-			}
-			.main-nav {
-				height: _rem(68);
-				border: solid 0.5px #979797;
-			}
-		}
-		
-		.hash-tag {
-			font-size: _rem(20);
-		}
-		.show-result, .btn-skip {
-			float: right;
-			padding: 0;
-			border: 0;
-			font-size: _rem(18);
-			color: #e5be0d;
-			background: none;
-			font-weight: 700;
-			line-height: _rem(38);
-		}
-		.img {
-			width: _rem(320);
-			height: _rem(374);
-			background: #7F7F7F;
-		}
-		.select-btns-wrapper {
-			margin: 0;
-			// margin-top: _rem(42.5);
-			margin-top: -115px;
-			.col-6 {
-				text-align: center;
-			}
-			button {
-				font-size: _rem(18);
-				font-weight: 700;
-				color: #d5d5d5;
-				cursor: pointer;
-			}
-		}
+    width: 100%;
+    height: 100%;
+    background: url("assets/images/img-back-yello.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    :global {
+        @import "../../styles/common";
+        .main-page-wrapper {
+            padding-top: _rem(62.5);
+        }
+        .main-header {
+            margin-top: 20px;
+            padding: 0 14px;
+            img {
+                width: 136.5px;
+            }
+            .main-title {
+                font-size: _rem(32);
+                display: inline-block;
+                color: #424242;
+            }
+            .main-nav {
+                height: _rem(68);
+                border: solid 0.5px #979797;
+            }
+        }
 
-		// Swipe Card Style!
-		.cards-wrapper {
-			position: relative;
-		}
-		img {
-		  width: 100%;
-		}
+        .hash-tag {
+            font-size: _rem(20);
+        }
+        .show-result,
+        .btn-skip {
+            float: right;
+            padding: 0;
+            border: 0;
+            font-size: _rem(18);
+            color: #e5be0d;
+            background: none;
+            font-weight: 700;
+            line-height: _rem(38);
+        }
+        .img {
+            width: _rem(320);
+            height: _rem(374);
+            background: #7f7f7f;
+        }
+        .select-btns-wrapper {
+            margin: 0;
+            // margin-top: _rem(42.5);
+            margin-top: -115px;
+            .col-6 {
+                text-align: center;
+            }
+            button {
+                padding: 10px;
+                background: #ececec;
+                color: #797171;
+                border-radius: 1.5px;
+                border: none;
+                width: 100%;
+                cursor: pointer;
+            }
+        }
 
-		li {
-		  list-style: none;
-		}
+        // Swipe Card Style!
+        .cards-wrapper {
+            position: relative;
+        }
+        img {
+            width: 100%;
+        }
 
-		h1, h2 {
-		  font-weight: 500;
-		}
+        li {
+            list-style: none;
+        }
 
-		.master-root {
-		  margin: 0 auto;
-		  margin-top: _rem(18);
-		  position: relative;
-		  height: _rem(400);
-		  width: 100%;
-		  overflow: hidden;
-		}
-		#cards {
-			position: relative;
-			height: 100%;
-		}
-		.card {
-		  background-size: cover;
-		  position: absolute;
-		  background: #F8F3F3;
-		  height: _rem(324);
-		  width: calc(100% - 18px);
-		  margin: 0 auto;
-		  transition: box-shadow .3s;
-		  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-		  cursor: pointer;
-		  border-radius: 8px;
-		  border: none;
-		    @include vendor('transition', ( 'width #{_duration(transition)} ease-out') );
-		  img {
-		  	border-radius: 8px;
-		    @include vendor('transition', ( 'all #{_duration(transition)} ease-out') );
-		  }
-		  &:nth-of-type(1) {
-		  	position: absolute;
-		  	top: 0;
-		  	max-width: 72%;
-		  	-webkit-box-shadow: 0px 10px 45px 0px rgba(0,0,0,0.15);
-			-moz-box-shadow: 0px 10px 45px 0px rgba(0,0,0,0.15);
-			box-shadow: 0px 10px 45px 0px rgba(0,0,0,0.15);
-		  	img {
-		  		// display: none;
-		  		opacity: 0;
-		  	}
-		  }
-		  &:nth-of-type(2) {
-		  	position: absolute;
-		  	top: -1rem;
-		  	display:block;
-		  	max-width: 81%;
-		  	-webkit-box-shadow: 0px 10px 45px 0px rgba(0,0,0,0.15);
-			-moz-box-shadow: 0px 10px 45px 0px rgba(0,0,0,0.15);
-			box-shadow: 0px 10px 45px 0px rgba(0,0,0,0.15);
-		  	img {
-		  		// display: none;
-		  		opacity: 0;
-		  	}
-		  }
-		  &:nth-of-type(3) {
-		  	position: absolute;
-		  	top: -2rem;
-		  }
-		  &:last-child {
-		  	width: calc(100% - 36px) !important;
-		  	max-width: 100% !important;
-		  	img {
-		  		// display: inherit !important;
-		  		opacity: 1;
-		  	}
-		  }
-		}
+        h1,
+        h2 {
+            font-weight: 500;
+        }
 
-		.animate {
-		  transition: transform .3s;
-		  box-shadow: none;
-		}
+        .master-root {
+            margin: 0 auto;
+            margin-top: _rem(18);
+            position: relative;
+            height: _rem(400);
+            width: 100%;
+            overflow: hidden;
+        }
+        #cards {
+            position: relative;
+            height: 100%;
+        }
+        .card {
+            background-size: cover;
+            position: absolute;
+            background: #f8f3f3;
+            height: _rem(324);
+            width: calc(100% - 18px);
+            margin: 0 auto;
+            transition: box-shadow 0.3s;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+                0 6px 6px rgba(0, 0, 0, 0.23);
+            cursor: pointer;
+            border-radius: 8px;
+            border: none;
+            @include vendor(
+                "transition",
+                ("width #{_duration(transition)} ease-out")
+            );
+            img {
+                border-radius: 8px;
+                @include vendor(
+                    "transition",
+                    ("all #{_duration(transition)} ease-out")
+                );
+            }
+            &:nth-of-type(1) {
+                position: absolute;
+                top: 0;
+                max-width: 72%;
+                -webkit-box-shadow: 0px 10px 45px 0px rgba(0, 0, 0, 0.15);
+                -moz-box-shadow: 0px 10px 45px 0px rgba(0, 0, 0, 0.15);
+                box-shadow: 0px 10px 45px 0px rgba(0, 0, 0, 0.15);
+                img {
+                    // display: none;
+                    opacity: 0;
+                }
+            }
+            &:nth-of-type(2) {
+                position: absolute;
+                top: -1rem;
+                display: block;
+                max-width: 81%;
+                -webkit-box-shadow: 0px 10px 45px 0px rgba(0, 0, 0, 0.15);
+                -moz-box-shadow: 0px 10px 45px 0px rgba(0, 0, 0, 0.15);
+                box-shadow: 0px 10px 45px 0px rgba(0, 0, 0, 0.15);
+                img {
+                    // display: none;
+                    opacity: 0;
+                }
+            }
+            &:nth-of-type(3) {
+                position: absolute;
+                top: -2rem;
+            }
+            &:last-child {
+                width: calc(100% - 36px) !important;
+                max-width: 100% !important;
+                img {
+                    // display: inherit !important;
+                    opacity: 1;
+                }
+            }
+        }
 
-		.inactive {
-		  box-shadow: none;
-		}
+        .animate {
+            transition: transform 0.3s;
+            box-shadow: none;
+        }
 
-		.alert {
-		  width: 45%;
-		  min-height: 10%;
-		  position: absolute;
-		  z-index: 9999;
-		  opacity: 0;
-		  transition: opacity .5s;
-		  color: white;
-		  vertical-align: middle;
-		  line-height: 3rem;
-		}
+        .inactive {
+            box-shadow: none;
+        }
 
-		.alert-visible {
-		  opacity: 1;
-		}
+        .alert {
+            width: 45%;
+            min-height: 10%;
+            position: absolute;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.5s;
+            color: white;
+            vertical-align: middle;
+            line-height: 3rem;
+        }
 
-		.alert-right {
-		  top: 0;
-		  right: 0;
-		  background: #2232FB;
-		  color: white;
-		  padding-left: 1rem;
-		  border-top-left-radius: 50px;
-		  border-bottom-left-radius: 50px;
-		}
+        .alert-visible {
+            opacity: 1;
+        }
 
-		.alert-left {
-		  top: 0;
-		  left: 0;
-		  background: white;
-		  color: #424242;
-		  padding-left: 1rem;
-		  border-top-right-radius: 50px;
-		  border-bottom-right-radius: 50px;
-		}
+        .alert-right {
+            top: 0;
+            right: 0;
+            background: #2232fb;
+            color: white;
+            padding-left: 1rem;
+            border-top-left-radius: 50px;
+            border-bottom-left-radius: 50px;
+        }
 
-		.alert-top {
-		  background: purple;
-		  border-radius: 50px;
-		  transform: translate(-50%, 0);
-		  margin-left: 50%;
-		 }
+        .alert-left {
+            top: 0;
+            left: 0;
+            background: white;
+            color: #424242;
+            padding-left: 1rem;
+            border-top-right-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
 
-		 .alert-bottom {
-		  bottom: 0;
-		  background: blue;
-		  border-top-left-radius: 50px;
-		  border-radius: 50px;
-		  transform: translate(-50%, 0);
-		  margin-left: 50%;
-		 }
+        .alert-top {
+            background: purple;
+            border-radius: 50px;
+            transform: translate(-50%, 0);
+            margin-left: 50%;
+        }
 
-		// Swipe Icon
-		.peeker-ic-select-info {
-			position: absolute;
-			right: 25px;
-			font-size: _rem(52.5);
-			top: 14px;
-			z-index: 99;
-			cursor: pointer;
-			&:hover,
-			&:active,
-			&:focus {
-				.path1:before {
-					color: rgb(23, 28, 240);
-				}
-				.path2:before {
-					color: white;
-				}
-			}
-		}
-	}
+        .alert-bottom {
+            bottom: 0;
+            background: blue;
+            border-top-left-radius: 50px;
+            border-radius: 50px;
+            transform: translate(-50%, 0);
+            margin-left: 50%;
+        }
+
+        // Swipe Icon
+        .peeker-ic-select-info {
+            position: absolute;
+            right: 25px;
+            font-size: _rem(52.5);
+            top: 14px;
+            z-index: 99;
+            cursor: pointer;
+            &:hover,
+            &:active,
+            &:focus {
+                .path1:before {
+                    color: rgb(23, 28, 240);
+                }
+                .path2:before {
+                    color: white;
+                }
+            }
+        }
+    }
 }
