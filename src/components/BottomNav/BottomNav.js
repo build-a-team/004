@@ -79,7 +79,7 @@ class BottomNav extends Component {
                         <div className="col-3 link-container">
                             <a
                                 className={
-                                    this.props.location.pathname === "upload"
+                                    this.props.location.pathname === "/upload"
                                         ? "active"
                                         : ""
                                 }
