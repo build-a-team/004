@@ -47,6 +47,7 @@ class MainPage extends Component {
             snap.forEach(shot => {
                 feeds.push({ ...shot.val(), key: shot.key });
             });
+            feeds.reverse();
             this.setState({
                 feeds: feeds,
                 feed: feeds[0]
@@ -111,7 +112,7 @@ class MainPage extends Component {
         return (
             <div className={cx("main-page")}>
                 <nav className={cx("main-nav")}>
-                    {this.state.feed.tags &&
+                    {this.state.feed &&
                         _.map(this.state.feed.tags, tag => {
                             return (
                                 <button key={tag} className="hash-tag">
