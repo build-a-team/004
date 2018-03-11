@@ -52,6 +52,7 @@ class FeedPage extends Component {
                     count: containFeeds.length
                 });
             });
+            tags = tags.reverse();
 
             this.setState({
                 tags
