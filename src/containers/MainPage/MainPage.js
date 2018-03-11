@@ -32,7 +32,7 @@ class MainPage extends Component {
     }
 
     componentDidMount() {
-        firebase.auth().onAuthStateChanged((user) => {
+        firebase.auth().onAuthStateChanged(user => {
             if (user) {
                 this.setState({
                     user
@@ -41,7 +41,7 @@ class MainPage extends Component {
                 console.log("You are not signed in");
             }
         });
-        
+
         feedsRef.once("value", snap => {
             const feeds = [];
             snap.forEach(shot => {
@@ -109,47 +109,64 @@ class MainPage extends Component {
     };
     render() {
         return (
-			<div className={cx("main-page")}>
-            	<nav className={cx("main-nav")}>
-					{
-						this.state.feed.tags && _.map(this.state.feed.tags, tag => {
-							return <button className="hash-tag">#{tag}}</button>
-						})
-					}
-            	</nav>
+            <div className={cx("main-page")}>
+                <nav className={cx("main-nav")}>
+                    {this.state.feed.tags &&
+                        _.map(this.state.feed.tags, tag => {
+                            return (
+                                <button key={tag} className="hash-tag">
+                                    #{tag}}
+                                </button>
+                            );
+                        })}
+                </nav>
                 <div className="main-page-wrapper">
-                  <div className="main-header">
-					  <h1 className="main-title">Peeker</h1>
-                      <button className="btn-skip"
-                              onClick={this.updateRateSkip}>SIKP</button>
-				  </div>
-				  <div className="cards-wrapper">
-					  <Cards
-					    alertRight={<CustomAlertRight />} 
-					    alertLeft={<CustomAlertLeft />} 
-					    onEnd={this.action('end')}
-					    className='master-root'>
-					    {this.state.feeds.map((item, key) => 
-					      <Card
-					          key={key}
-					          onSwipeLeft={this.updateRateDown}
-					          onSwipeRight={this.updateRateUp}>
-					        <img src={item.downloadURL} alt="" width="100%;" height="100%;" />
-					      </Card>
-					    )}
-
-					  </Cards>
-					  <span class="peeker peeker-ic-select-info"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
-				  </div>
-				</div>
+                    <div className="main-header">
+                        <h1 className="main-title">Peeker</h1>
+                        <button
+                            className="btn-skip"
+                            onClick={this.updateRateSkip}
+                        >
+                            SKIP
+                        </button>
+                    </div>
+                    <div className="cards-wrapper">
+                        <Cards
+                            alertRight={<CustomAlertRight />}
+                            alertLeft={<CustomAlertLeft />}
+                            onEnd={this.action("end")}
+                            className="master-root"
+                        >
+                            {this.state.feeds.map((item, key) => (
+                                <Card
+                                    key={key}
+                                    onSwipeLeft={this.updateRateDown}
+                                    onSwipeRight={this.updateRateUp}
+                                >
+                                    <img
+                                        src={item.downloadURL}
+                                        alt=""
+                                        width="100%;"
+                                        height="100%;"
+                                    />
+                                </Card>
+                            ))}
+                        </Cards>
+                        <span class="peeker peeker-ic-select-info">
+                            <span class="path1" />
+                            <span class="path2" />
+                            <span class="path3" />
+                        </span>
+                    </div>
+                </div>
                 <div className="row select-btns-wrapper">
-				  <div className="col-6">
-				  	<button onClick={this.updateRateDown}>Stupid 😅</button>
-				  </div>
-				  <div className="col-6">
-				  	<button onClick={this.updateRateUp}>Great 😍</button>
-				  </div>
-				</div>
+                    <div className="col-6">
+                        <button onClick={this.updateRateDown}>Stupid 😅</button>
+                    </div>
+                    <div className="col-6">
+                        <button onClick={this.updateRateUp}>Great 😍</button>
+                    </div>
+                </div>
             </div>
         );
     }
