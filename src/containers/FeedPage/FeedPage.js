@@ -5,7 +5,7 @@ import firebase from "config/firebase";
 import classNames from "classnames/bind";
 import styles from "./FeedPage.scss";
 import BottomNav from "components/BottomNav";
-import testImg from "assets/images/img-card.png";
+import logo from "assets/images/ic-main-logo@3x.png";
 const cx = classNames.bind(styles);
 
 class FeedPage extends Component {
@@ -44,7 +44,7 @@ class FeedPage extends Component {
                 let containFeeds = _.filter(feeds, feed => {
                     return _.includes(feed.tagList, obj.val());
                 });
-                console.log(containFeeds[0].downloadURL);
+
                 tags.push({
                     id: obj.key,
                     name: obj.val(),
@@ -67,27 +67,28 @@ class FeedPage extends Component {
     render() {
         return (
             <div className={cx("feed-page")}>
-                <div className="main-header">
-                    <h1 className="main-title">Feed</h1>
+                <div className="main-page-wrapper">
+                    <div className="main-header">
+                        <img src={logo} />
+                    </div>
+                    <div className={cx("feed-search-tag")}>
+                        <span className={cx("tag")}>#Girl</span>
+                        <span className={cx("tag")}>#Daily_look</span>
+                        <span className={cx("tag")}>#Lovely</span>
+                    </div>
+                    <div className="container-tagImg">
+                        {this.state.tags.map(tag => {
+                            return (
+                                <Feed
+                                    img={tag.img}
+                                    key={tag.id}
+                                    hashtag={"#" + tag.name}
+                                    count={tag.count}
+                                />
+                            );
+                        })}
+                    </div>
                 </div>
-                <div className={cx("feed-search-tag")}>
-                    <span className={cx("tag")}>#Girl</span>
-                    <span className={cx("tag")}>#Daily_look</span>
-                    <span className={cx("tag")}>#Lovely</span>
-                </div>
-                <div className="container-tagImg">
-                    {this.state.tags.map(tag => {
-                        return (
-                            <Feed
-                                img={tag.img}
-                                key={tag.id}
-                                hashtag={"#" + tag.name}
-                                count={tag.count}
-                            />
-                        );
-                    })}
-                </div>
-                <BottomNav className="bottom-nav" />
             </div>
         );
     }

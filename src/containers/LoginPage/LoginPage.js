@@ -4,6 +4,7 @@ import InputField from "components/UI/InputField";
 import firebase from "config/firebase";
 import classNames from "classnames/bind";
 import styles from "./LoginPage.scss";
+import logo from "assets/images/ic-main-logo@3x.png";
 const cx = classNames.bind(styles);
 
 class LoginPage extends Component {
@@ -87,7 +88,12 @@ class LoginPage extends Component {
     render() {
         return (
             <div className={cx("login-page")}>
-                <h1>Login Page</h1>
+                <div
+                    className={cx("login-header")}
+                    style={{ marginTop: "30px", paddingLeft: "10px" }}
+                >
+                    <img src={logo} style={{ width: "136.5px" }} />
+                </div>
                 <div className={cx("form")}>
                     <form onSubmit={this.handleLogin}>
                         <InputField

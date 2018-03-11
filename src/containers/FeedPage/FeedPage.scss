@@ -5,6 +5,16 @@
     padding-bottom: 65px;
     :global {
         @import "../../styles/common";
+        .main-page-wrapper {
+            padding-top: _rem(62.5);
+        }
+        .main-header {
+            margin-top: 20px;
+            padding: 0 14px;
+            img {
+                width: 136.5px;
+            }
+        }
         .main-title {
             font-size: _rem(32);
             display: inline-block;

@@ -3,10 +3,10 @@
     @import "styles/common";
     @import "styles/base/peeker-icon";
     .app {
-        max-width: _rem(360);
+        max-width: 100%;
         height: 100vh;
         margin: 0 auto;
-        border: 1px solid red;
+        // border: 1px solid red;
         position: relative;
         background-color: #f2f2f2;
 
