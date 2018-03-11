@@ -166,26 +166,18 @@ class UploadPhotoPage extends Component {
 
     render() {
         return (
-            <div className="App">
-                {/* <input
-                    type="file"
-                    capture="camera"
-                    accept="image/*"
-                    ref={input => {
-                        this.cameraUpload = input;
-                    }}
-                    id="cameraInput"
-                    name="cameraInput"
-                    onChange={this.handlePreUpload}
-                /> */}
-                <br />
-                <img
-                    src={this.state.src}
-                    alt="미리보기"
-                    height="300"
-                    width="400"
-                />
-                <br />
+            <div className={cx("upload-page")}>
+                <div className={cx("upload-header")}>
+                    <h1>Write</h1>
+                </div>
+                <div className={cx("upload-img-wrap")}>
+                    <img
+                        src={this.state.src}
+                        alt="미리보기"
+                        height="300"
+                        width="400"
+                    />
+                </div>
                 <Creatable
                     // closeOnSelect
                     multi
@@ -198,7 +190,7 @@ class UploadPhotoPage extends Component {
                     value={this.state.value}
                 />
                 <br />
-                <button onClick={this.handleUpload}>업로드하기</button>
+                <button onClick={this.handleUpload}>Save</button>
             </div>
         );
     }
